@@ -15,17 +15,18 @@
   <body ng-controller="VGDBController">
     <div class="ui container">
       <h1>VGDB</h1>
-      <h4>STUFF</h4>
     </div>
     <div class="ui center aligned container">
       <form class="ui form" ng-submit="getTwitchStream()">
-        <div class="ui field">
-          <input type="text" ng-model="searchTerm">
-          <input class="ui button" type="submit" value="Search">
+        <div class="ui large icon input">
+          <input type="text" placeholder="Search for a game" ng-model="searchTerm">
+          <i class="search icon"></i>
         </div>
+        <input class="ui red button" type="submit" value="Search">
       </form>
-      <div id="giantbomb" class="ui container">
-
+      <div id="giantbomb" class="ui container" ng-show="showImage">
+        <h1>{{ gameName }}</h1>
+        <img ng-src="{{ gameImage }}" alt="" />
       </div>
       <h1>Live Twitch Stream</h1>
       <div>

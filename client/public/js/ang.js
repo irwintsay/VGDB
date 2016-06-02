@@ -6,15 +6,23 @@ vgdbApp.controller("VGDBController", ["$scope", "$http", function($scope, $http)
   $scope.allYouTubeVideos = [];
   $scope.giantBombData = null;
   $scope.gameImage = '';
+  $scope.showImage = false;
 
+  // Query Giantbomb API
+  // Gets Name of game, Image URL
   $scope.getGiantBombData = function() {
-    var query = "https://www.giantbomb.com/api/search?api_key=1881a2a0f53e3677a2fd6d34be616c2e1e86e957&format=json&resources=game&limit=1&query=" + $scope.searchTerm;
+    var query = "https://www.giantbomb.com/api/search?json_callback=JSON_CALLBACK&api_key=1881a2a0f53e3677a2fd6d34be616c2e1e86e957&format=jsonp&resources=game&limit=1&query=" + $scope.searchTerm;
     $http.jsonp(query).then(function(response) {
       $scope.giantBombData = response.data;
+
+      $scope.gameName = $scope.giantBombData.results[0].name;
       console.log($scope.giantBombData.results[0].name);
-      $scope.gameImage = $scope.giantBombData.results[0].image.super_url;
+      $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.results[0].image.super_url;
+      console.log($scope.gameImage);
+      $scope.showImage = true;
     });
   };
+
   $scope.resetTwitchStream = function() {
     changeTwitchSource($scope.twitchStream);
   };

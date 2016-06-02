@@ -14,8 +14,10 @@ var app             = express(),
 // Routing
 var indexRouter     = require('./server/routes/index.js');
 // var apiCardsRouter  = require('./server/routes/api/cards-router.js');
+var testRouter      = require('./server/routes/test.js');
 app.use('/', indexRouter);
 // app.use('/api/cards', apiCardsRouter);
+app.use('/test', testRouter);
 
 app.use(express.static('client/public'));
 app.set('view engine', 'ejs');

@@ -2,6 +2,7 @@
 var express         = require('express'),
     bodyParser      = require('body-parser'),
     cookieParser    = require('cookie-parser'),
+    dotenv          = require('dotenv').config(),
     mongoose        = require('mongoose'),
     morgan          = require('morgan'),
     path            = require('path')
@@ -11,13 +12,7 @@ var app             = express(),
     port            = process.env.PORT || 6969,
     db              = process.env.MONGODB_URI || "mongodb://localhost/vgdb";
 
-// Routing
-var indexRouter     = require('./server/routes/index.js');
-// var apiCardsRouter  = require('./server/routes/api/cards-router.js');
-var testRouter      = require('./server/routes/test.js');
-app.use('/', indexRouter);
-// app.use('/api/cards', apiCardsRouter);
-app.use('/test', testRouter);
+
 
 app.use(express.static('client/public'));
 app.set('view engine', 'ejs');
@@ -25,9 +20,18 @@ app.set('views', path.join(__dirname, 'client/public/views'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+// Routing
+var indexRouter     = require('./server/routes/index.js');
+var apiUsersRouter  = require('./server/routes/api/users.js');
+var testRouter      = require('./server/routes/test.js');
+app.use('/', indexRouter);
+app.use('/api/users', apiUsersRouter);
+app.use('/test', testRouter);
 
 // Launch Database and Application
 mongoose.connect(db);
 app.listen(port, function() {
-  console.log("Flash Cards on port: " + port);
+  console.log("VGDB listening: " + port);
 });

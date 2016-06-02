@@ -12,8 +12,9 @@ var Search        = require('../../models/search');
 var passport      = require("../../lib/passportStrategy.js");
 
 // User create route
-usersRouter.post('/', function(req, res){
-  User.create(req.body.user, function(error, dbUser) {
+usersRouter.post('/', function(req, res) {
+  console.log(req.body);
+  User.create(req.body, function(error, dbUser) {
     if (error) {
       console.log("Error creating User");
       res.status(501).json(error);
@@ -25,12 +26,6 @@ usersRouter.post('/', function(req, res){
       res.json({ token: token });
     }
   });
-  // var newUser = User({
-  //   username:   req.body.username,
-  //   email:      req.body.email,
-  //   password:   req.body.password,
-  //   firstName:  req.body.firstName,
-  //   lastName:   req.body.lastName,
-  //   favorites:  []
-  // });
 });
+
+module.exports = usersRouter;

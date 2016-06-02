@@ -14,6 +14,31 @@ function changeTwitchSource(source) {
   $twitch.attr("src", url);
 };
 
-$(function() {
 
+function setSubmitHandler(){
+  $("#new-user").submit(function(e){
+    e.preventDefault();
+
+    var payload = {
+      username:   $('#new-user').find('[name=username]').val(),
+      email:      $('#new-user').find('[name=email]').val(),
+      password:   $('#new-user').find('[name=password]').val(),
+      firstName:  $('#new-user').find('[name=firstName]').val(),
+      lastName:   $('#new-user').find('[name=lastName]').val()
+    };
+    console.log(payload);
+    $.ajax({
+      url:      '/api/users',
+      method:   'post',
+      data:     payload,
+      success: function(data){
+        Cookies.set('user_token', data.token);
+        location.reload();
+      }
+    });
+  });
+};
+
+$(function() {
+  setSubmitHandler();
 });

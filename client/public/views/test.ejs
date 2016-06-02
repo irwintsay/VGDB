@@ -4,11 +4,27 @@
     <meta charset="utf-8">
     <title>Background Test</title>
     <link rel="stylesheet" href="/css/test.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js" charset="utf-8"></script>
+    <script src="/js/scripts.js" charset="utf-8"></script>
   </head>
   <body>
     <div id="content">
       <h1><span class="title">V</span><span class="title">G</span><span class="title">D</span><span class="title">B</span></h1>
       <h2>The ultimate resource for video game content</h2>
+
+      <form id="new-user" action="/api/users" method="post">
+        <h4 class='greeting-line'>
+          Sign up for free
+        </h4>
+        <input class='form-field' type="text" name="firstName" placeholder="First Name">
+        <input class='form-field' type="text" name="lastName" placeholder="Last Name">
+        <input class='form-field' type="text" name="username" placeholder="Username*">
+        <input class='form-field' type="text" name="email" placeholder="Email*">
+        <input class='form-field' type="password" name="password" placeholder="Password*">
+        <input id='signup-submit' type="submit" name="submit-form" value="Sign Up">
+        <div class='change-form'>Already have an account? <a href='#' id='login-link'>Log in</a></div>
+      </form>
     </div>
     <div id="screen">
 

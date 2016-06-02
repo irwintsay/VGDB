@@ -14,7 +14,7 @@ usersRouter.post('/', passport.authenticate('local', {session: false}), function
   var tokenObject = {_doc: { username: req.user.username }};
   // var token = jwt.sign(req.user, process.env.JWT_SECRET, {
   var token = jwt.sign(tokenObject, process.env.JWT_SECRET, {
-    expiresIn: 1440  // expires in 24 hours
+    expiresIn: "24h"  // expires in 24 hours
   });
   res.json({token: token, currentUser: req.user});
 });

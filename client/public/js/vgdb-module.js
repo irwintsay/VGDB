@@ -3,19 +3,23 @@
 //   'contentController'
 // ]);
 
-angular.module('VGDBApp', ['ngRoute'])
-  .config(['$routeProvider', function( $routeProvider ){
+angular.module('VGDBApp', [
+  'ngRoute',
+  'loginController',
+  'contentController'
+])
+.config(['$routeProvider', function( $routeProvider ){
 
-    $routeProvider
-      .when('/', {
-        templateUrl:  '/views/templates/welcome.ejs',
-        controller:   'LoginController'
-      })
-      .when('/search', {
-        templateUrl:  '/views/templates/content.ejs',
-        controller:   'ContentController'
-      })
-      .otherwise({
-        redirectTo: '/'
-      })
-  }]);
+  $routeProvider
+    .when('/', {
+      templateUrl:  '/views/templates/welcome.ejs',
+      controller:   'LoginController'
+    })
+    .when('/search', {
+      templateUrl:  '/views/templates/content.ejs',
+      controller:   'ContentController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    })
+}]);

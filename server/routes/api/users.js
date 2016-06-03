@@ -77,13 +77,13 @@ usersRouter.delete('/:username', function(req, res) {
   // var query = { username: cookiesUser.username };
   var query = { username: req.params.username };
 
-  User.remove(query, function(error, removedUser) {
+  User.remove(query, function(error, status) {
     if (error) {
       console.log("Error deleting User");
       res.json(error);
     } else {
       console.log('Successfully deleted User');
-      res.json(removedUser);
+      res.json(status);
     }
   });
 });

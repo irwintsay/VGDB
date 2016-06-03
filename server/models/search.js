@@ -5,7 +5,8 @@ var mongoose          = require('mongoose');
 var searchSchema      = mongoose.Schema({
   queryString: {
     type:         String,
-    required:     true
+    required:     true,
+    unique:       true
   },
   count: {
     type:         Number,
@@ -13,13 +14,14 @@ var searchSchema      = mongoose.Schema({
     default:      0 // Might not need to set a default for this field
   },
   firstSearched: {
-    type:         Date,
-    required:     true
+    type:         Date
   },
   lastSearched: {
-    type:         Date,
-    required:     true
-  }
+    type:         Date
+  },
+  user_ids: [{
+    type:         String
+  }]
 }, { timestamps: true });
 
 // Export Search Model

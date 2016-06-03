@@ -75,13 +75,11 @@ body {
 }
 
 .bgimage {
-  /*display: inline-block;*/
   float:left;
   margin: 0;
   padding: 0;
   height: 25vh;
   width: 25%;
-  /*border: 1px black solid;*/
   background-size: cover;
 }
 

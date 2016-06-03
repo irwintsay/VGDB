@@ -72,9 +72,10 @@ usersRouter.put('/edit', function(req, res){
 });
 
 // User Delete
-usersRouter.delete('/', function(req, res) {
-  var cookiesUser = JSON.parse(req.cookies.current_user);
-  var query = { username: cookiesUser.username };
+usersRouter.delete('/:username', function(req, res) {
+  // var cookiesUser = JSON.parse(req.cookies.current_user);
+  // var query = { username: cookiesUser.username };
+  var query = { username: req.params.username };
 
   User.remove(query, function(error, removedUser) {
     if (error) {
@@ -86,29 +87,29 @@ usersRouter.delete('/', function(req, res) {
     }
   });
 });
-
-// User Edit - Add Search
-usersRouter.put('/addSearch', function(req, res){
-
-  var newSearch = Search({
-    queryString: req.body.queryString,
-    count: req.body.count,
-    firstSearched: req.body.firstSearched,
-    lastSearched: req.body.lastSearched
-  });
-
-  var cookiesUser = JSON.parse(req.cookies.current_user);
-  var query = { username: cookiesUser.username };
-
-  // Update User based on query with new Favorite
-  User.update(query, { $push: { "searches": newFavorite } }, function(error, dbUser) {
-    if (error) {
-      console.log("Error adding Search query");
-      res.json(error);
-    } else {
-      res.json(newSearch);
-    }
-  });
-});
+//
+// // User Edit - Add Search
+// usersRouter.put('/addSearch', function(req, res){
+//
+//   var newSearch = Search({
+//     queryString: req.body.queryString,
+//     count: req.body.count,
+//     firstSearched: req.body.firstSearched,
+//     lastSearched: req.body.lastSearched
+//   });
+//
+//   var cookiesUser = JSON.parse(req.cookies.current_user);
+//   var query = { username: cookiesUser.username };
+//
+//   // Update User based on query with new Favorite
+//   User.update(query, { $push: { "searches": newFavorite } }, function(error, dbUser) {
+//     if (error) {
+//       console.log("Error adding Search query");
+//       res.json(error);
+//     } else {
+//       res.json(newSearch);
+//     }
+//   });
+// });
 
 module.exports = usersRouter;

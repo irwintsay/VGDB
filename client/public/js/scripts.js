@@ -55,7 +55,7 @@ function setLoginHandler(){
         console.log("Successful login");
         Cookies.set("user_token", data.token);
         // location.reload();
-        window.location.href = "/test";
+        window.location.href = "/main";
       }
     });
   });

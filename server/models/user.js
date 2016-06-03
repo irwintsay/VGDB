@@ -3,7 +3,7 @@ var mongoose          = require('mongoose'),
     bcrypt            = require('bcryptjs');
 
 // Require Search Model
-var SearchModel       = require('./search');
+// var SearchModel       = require('./search');
 
 // User Schema
 var userSchema        = mongoose.Schema({
@@ -26,10 +26,7 @@ var userSchema        = mongoose.Schema({
   },
   lastName: {
     type:       String
-  },
-  searches: [
-    SearchModel.schema
-  ]
+  }
 }, { timestamps: true });
 
 // Hash the password before saving

@@ -23,18 +23,18 @@ passport.use(new JwtStrategy(JwtOpts, function(jwt_payload, done) {
     console.log(jwt_payload);
     User.findOne({username: jwt_payload._doc.username}, function(err, user) {
         if (err) {
-            return done(err, false);
+          return done(err, false);
         }
         if (user) {
-            done(null, user);
+          done(null, user);
         } else {
-            done(null, false);
-            // or you could create a new account
+          done(null, false);
+          // or you could create a new account
         }
     });
 }));
 
-passport.use( new LocalStrategy(
+passport.use(new LocalStrategy(
   function( username, password, done ) {
     User.findOne({ username: username }, function( err, dbUser ) {
       if (err) { return done(err); }

@@ -1,5 +1,5 @@
-angular.module('loginController', ['ngCookies'])
-  .controller('LoginController', ['$scope', '$http', '$cookies', '$window', function($scope, $http, $cookies, $window) {
+angular.module('profileController', ['ngCookies'])
+  .controller('ProfileController', ['$scope', '$http', '$cookies', '$window', function($scope, $http, $cookies, $window) {
 
     // NG-MODEL variables
     $scope.searchTerm = '';
@@ -16,7 +16,7 @@ angular.module('loginController', ['ngCookies'])
     };
 
     // NG-SHOW variables
-    $scope.showLoginForm = true;
+    $scope.showLoginForm = false;
     $scope.showSignupForm = false;
 
     $scope.clearUserModels = function() {

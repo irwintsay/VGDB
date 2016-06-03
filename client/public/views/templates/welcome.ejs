@@ -10,32 +10,6 @@
       <input class="ui red button" type="submit" value="Search">
     </form>
   </div>
-  <div class="ui container" ng-show="showSignupForm">
-    <form id="new-user" ng-submit="submitSignupForm()">
-      <div class="ui large inverted transparent input">
-        <input class='' type="text" ng-model="newUser.username" placeholder="Username">
-        <input class='' type="text" ng-model="newUser.email" placeholder="Email">
-        <input class='' type="password" ng-model="newUser.password" placeholder="Password">
-        <input class='' type="text" ng-model="newUser.firstName" placeholder="First Name">
-        <input class='' type="text" ng-model="newUser.lastName" placeholder="Last Name">
-        <input type="submit" value="Sign Up">
-      </div>
-    </form>
-  </div>
-
-  <div class="ui container" ng-show="showLoginForm">
-    <form id="login-user" ng-submit="submitLoginForm()">
-      <div class="ui large inverted input">
-        <input type="text" ng-model="loginUser.username" placeholder="Username">
-      </div>
-      <div class="ui large inverted input">
-        <input type="password" ng-model="loginUser.password" placeholder="Password">
-      </div>
-      <div class="ui large inverted input">
-        <input type="submit" name="login-form" value="Log In">
-      </div>
-    </form>
-  </div>
 </div>
 
 <div id="screen"></div>

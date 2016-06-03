@@ -5,15 +5,15 @@
 
 angular.module('VGDBApp', [
   'ngRoute',
-  'loginController',
-  'contentController'
+  'contentController',
+  'profileController'
 ])
 .config(['$routeProvider', function( $routeProvider ){
 
   $routeProvider
     .when('/', {
       templateUrl:  '/views/templates/welcome.ejs',
-      controller:   'LoginController'
+      controller:   'ContentController'
     })
     .when('/search/:query', {
       templateUrl:  '/views/templates/content.ejs',

@@ -62,6 +62,6 @@ function setLoginHandler(){
 };
 
 $(function() {
-  setSignupHandler();
-  setLoginHandler();
+  // setSignupHandler();
+  // setLoginHandler();
 });

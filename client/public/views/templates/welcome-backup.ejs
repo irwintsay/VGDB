@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="VGDBApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Background Test</title>
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css/login.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
+    <script src="/js/controllers/login-ctrl.js" charset="utf-8"></script>
+    <script src="/js/controllers/content-ctrl.js" charset="utf-8"></script>
+    <script src="/js/vgdb-module.js" charset="utf-8"></script>
+    <script src="/js/scripts.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="LoginController">
+    <div id="content">
+      <div class="ui small right aligned inverted header">
+        <a ng-click="showLoginForm = true">Login</a>
+        <a ng-click="showSignupForm = true">Create Account</a>
+      </div>
+      <h1><span class="title">V</span><span class="title">G</span><span class="title">D</span><span class="title">B</span></h1>
+      <h2>The ultimate resource for video game content</h2>
+      <div class="ui center aligned container">
+        <form class="ui form" ng-submit="getTwitchStream()">
+          <div class="ui large transparent inverted icon input">
+            <input id="main-search" type="text" placeholder="Search for a game" ng-model="searchTerm">
+            <i class="search icon"></i>
+          </div>
+          <input class="ui red button" type="submit" value="Search">
+        </form>
+      </div>
+      <div class="ui container" ng-show="showSignupForm">
+        <form id="new-user" ng-submit="submitSignupForm()">
+          <div class="ui large inverted transparent input">
+            <input class='' type="text" ng-model="newUser.username" placeholder="Username">
+            <input class='' type="text" ng-model="newUser.email" placeholder="Email">
+            <input class='' type="password" ng-model="newUser.password" placeholder="Password">
+            <input class='' type="text" ng-model="newUser.firstName" placeholder="First Name">
+            <input class='' type="text" ng-model="newUser.lastName" placeholder="Last Name">
+            <input type="submit" value="Sign Up">
+          </div>
+        </form>
+      </div>
+
+      <div class="ui container" ng-show="showLoginForm">
+        <form id="login-user" ng-submit="submitLoginForm()">
+          <div class="ui large inverted input">
+            <input type="text" ng-model="loginUser.username" placeholder="Username">
+          </div>
+          <div class="ui large inverted input">
+            <input type="password" ng-model="loginUser.password" placeholder="Password">
+          </div>
+          <div class="ui large inverted input">
+            <input type="submit" name="login-form" value="Log In">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="screen"></div>
+
+    <div id="mosaic">
+      <div class="bgimage one"></div>
+      <div class="bgimage two"></div>
+      <div class="bgimage three"></div>
+      <div class="bgimage four"></div>
+      <div class="bgimage five"></div>
+      <div class="bgimage six"></div>
+      <div class="bgimage seven"></div>
+      <div class="bgimage eight"></div>
+      <div class="bgimage nine"></div>
+      <div class="bgimage ten"></div>
+      <div class="bgimage eleven"></div>
+      <div class="bgimage twelve"></div>
+      <div class="bgimage thirteen"></div>
+      <div class="bgimage fourteen"></div>
+      <div class="bgimage fifteen"></div>
+      <div class="bgimage sixteen"></div>
+    </div>
+  </body>
+</html>

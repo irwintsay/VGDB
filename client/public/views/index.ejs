@@ -2,52 +2,25 @@
 <html ng-app="VGDBApp">
   <head>
     <meta charset="utf-8">
-    <title>VGDB</title>
+    <title>Video Game Database</title>
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
     <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js" charset="utf-8"></script>
     <script src="/semantic/dist/semantic.min.js"></script>
     <script src="/js/controllers/login-ctrl.js" charset="utf-8"></script>
     <script src="/js/controllers/content-ctrl.js" charset="utf-8"></script>
     <script src="/js/vgdb-module.js" charset="utf-8"></script>
     <script src="/js/scripts.js" charset="utf-8"></script>
   </head>
-  <body ng-controller="ContentController">
-    <div class="ui container">
-      <h1>VGDB</h1>
+  <body>
+    <div id="header" class="ui small right aligned inverted header">
+      <a ng-click="showLoginForm = true">Login</a>
+      <a ng-click="showSignupForm = true">Create Account</a>
     </div>
-    <div class="ui center aligned container">
-      <form class="ui form" ng-submit="getTwitchStream()">
-        <div class="ui large icon input">
-          <input type="text" placeholder="Search for a game" ng-model="searchTerm">
-          <i class="search icon"></i>
-        </div>
-        <input class="ui red button" type="submit" value="Search">
-      </form>
-      <div id="giantbomb" class="ui container" ng-show="showImage">
-        <h1>{{ gameName }}</h1>
-        <img ng-src="{{ gameImage }}" alt="" />
-      </div>
-      <h1>Live Twitch Stream</h1>
-      <div>
-        <iframe id="twitch-stream"
-          src="http://player.twitch.tv/?channel=ducksauce"
-          height="480"
-          width="640"
-          frameborder="0"
-          scrolling="no"
-          allowfullscreen="true">
-        </iframe>
-      </div>
-
-      <h1>YouTube Content</h1>
-      <div id="video-here">
-
-      </div>
-
+    <div ng-view>
+      <!-- Dynamic View -->
     </div>
   </body>
 </html>

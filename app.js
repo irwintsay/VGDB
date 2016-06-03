@@ -22,12 +22,10 @@ app.use(cookieParser());
 
 // Routing
 var indexRouter     = require('./server/routes/index.js');
-var testRouter      = require('./server/routes/test.js');
 var apiUsersRouter  = require('./server/routes/api/users.js');
 var apiAuthRouter   = require('./server/routes/api/auth.js');
 
 app.use('/', indexRouter);
-app.use('/test', testRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/auth', apiAuthRouter);
 

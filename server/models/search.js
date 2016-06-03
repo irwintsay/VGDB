@@ -5,8 +5,7 @@ var mongoose          = require('mongoose');
 var searchSchema      = mongoose.Schema({
   queryString: {
     type:         String,
-    required:     true,
-    unique:       true
+    required:     true
   },
   count: {
     type:         Number,

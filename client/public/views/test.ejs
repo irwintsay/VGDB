@@ -5,7 +5,7 @@
     <title>Background Test</title>
     <link rel="stylesheet" href="/css/test.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.min.js" charset="utf-8"></script>
     <script src="/js/scripts.js" charset="utf-8"></script>
   </head>
   <body>
@@ -13,7 +13,7 @@
       <h1><span class="title">V</span><span class="title">G</span><span class="title">D</span><span class="title">B</span></h1>
       <h2>The ultimate resource for video game content</h2>
 
-      <form id="new-user" action="/api/users" method="post">
+      <form id="new-user">
         <h4 class='greeting-line'>
           Sign up for free
         </h4>
@@ -24,6 +24,11 @@
         <input class='form-field' type="password" name="password" placeholder="Password*">
         <input id='signup-submit' type="submit" name="submit-form" value="Sign Up">
         <div class='change-form'>Already have an account? <a href='#' id='login-link'>Log in</a></div>
+      </form>
+      <form id="login-user">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input id="login-submit" type="submit" name="login-form" value="Log In">
       </form>
     </div>
     <div id="screen">

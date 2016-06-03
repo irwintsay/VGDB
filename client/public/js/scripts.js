@@ -15,7 +15,7 @@ function changeTwitchSource(source) {
 };
 
 
-function setSubmitHandler(){
+function setSignupHandler(){
   $("#new-user").submit(function(e){
     e.preventDefault();
 
@@ -31,7 +31,7 @@ function setSubmitHandler(){
       url:      '/api/users',
       method:   'post',
       data:     payload,
-      success: function(data){
+      success: function(data) {
         Cookies.set('user_token', data.token);
         location.reload();
       }
@@ -39,6 +39,29 @@ function setSubmitHandler(){
   });
 };
 
+function setLoginHandler(){
+  $("#login-user").submit(function(e){
+    e.preventDefault();
+    var payload = {
+      username:     $('#login-user').find('[name=username]').val(),
+      password:     $('#login-user').find('[name=password]').val()
+    };
+
+    $.ajax({
+      url:        '/api/auth',
+      method:     'post',
+      data:       payload,
+      success:    function(data) {
+        console.log("Successful login");
+        Cookies.set("user_token", data.token);
+        // location.reload();
+        window.location.href = "/test";
+      }
+    });
+  });
+};
+
 $(function() {
-  setSubmitHandler();
+  setSignupHandler();
+  setLoginHandler();
 });

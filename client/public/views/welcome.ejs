@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="VGDBApp">
   <head>
     <meta charset="utf-8">
     <title>Background Test</title>
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
     <link rel="stylesheet" href="/css/login.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.min.js" charset="utf-8"></script>
     <script src="/semantic/dist/semantic.min.js"></script>
+    <script src="/js/controllers/login-ctrl.js" charset="utf-8"></script>
+    <script src="/js/controllers/content-ctrl.js" charset="utf-8"></script>
+    <script src="/js/vgdb-module.js" charset="utf-8"></script>
     <script src="/js/scripts.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body ng-controller="LoginController">
     <div id="content">
       <h1><span class="title">V</span><span class="title">G</span><span class="title">D</span><span class="title">B</span></h1>
       <h2>The ultimate resource for video game content</h2>
 
-      <div class="ui container">
+      <div class="ui container" ng-show="show">
         <form id="new-user">
           <div class="ui large inverted transparent input">
             <input class='form-field' type="text" name="username" placeholder="Username">

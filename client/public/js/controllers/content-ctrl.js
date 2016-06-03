@@ -1,7 +1,8 @@
 angular.module('contentController', [])
-  .controller('ContentController', ['$scope', '$http', function($scope, $http) {
+  .controller('ContentController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
-    $scope.searchTerm = '';
+    // $scope.searchTerm = '';
+    $scope.searchTerm = $routeParams.query;
     $scope.twitchStream ='';
     $scope.allYouTubeVideos = [];
     $scope.giantBombData = null;

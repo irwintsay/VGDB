@@ -1,7 +1,8 @@
 angular.module('loginController', ['ngCookies'])
-  .controller('LoginController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
+  .controller('LoginController', ['$scope', '$http', '$cookies', '$window', function($scope, $http, $cookies, $window) {
 
     // NG-MODEL variables
+    $scope.searchTerm = '';
     $scope.newUser = {
       username:   '',
       email:      '',
@@ -15,7 +16,7 @@ angular.module('loginController', ['ngCookies'])
     };
 
     // NG-SHOW variables
-    $scope.showLoginForm = false;
+    $scope.showLoginForm = true;
     $scope.showSignupForm = false;
 
     $scope.clearUserModels = function() {
@@ -46,6 +47,10 @@ angular.module('loginController', ['ngCookies'])
         $scope.clearUserModels();
         $scope.showLoginForm = false;
       });
+    };
+
+    $scope.redirectToContent = function() {
+      $window.location.href = "#/search/" + $scope.searchTerm;
     };
 
   }]);

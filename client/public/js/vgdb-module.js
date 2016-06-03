@@ -15,7 +15,7 @@ angular.module('VGDBApp', [
       templateUrl:  '/views/templates/welcome.ejs',
       controller:   'LoginController'
     })
-    .when('/search', {
+    .when('/search/:query', {
       templateUrl:  '/views/templates/content.ejs',
       controller:   'ContentController'
     })

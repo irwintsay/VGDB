@@ -19,8 +19,13 @@ var searchSchema      = mongoose.Schema({
   lastSearched: {
     type:         Date
   },
-  user_ids: [{
-    type:         String
+  users: [{
+    user_id: {
+      type:       String
+    },
+    summary: {
+      type:       String
+    }
   }]
 }, { timestamps: true });
 

@@ -21,12 +21,14 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Routing
-var indexRouter     = require('./server/routes/index.js');
-var apiUsersRouter  = require('./server/routes/api/users.js');
-var apiAuthRouter   = require('./server/routes/api/auth.js');
+var indexRouter       = require('./server/routes/index.js');
+var apiUsersRouter    = require('./server/routes/api/users.js');
+var apiSearchesRouter = require('./server/routes/api/searches.js');
+var apiAuthRouter     = require('./server/routes/api/auth.js');
 
 app.use('/', indexRouter);
 app.use('/api/users', apiUsersRouter);
+app.use('/api/searches', apiSearchesRouter);
 app.use('/api/auth', apiAuthRouter);
 
 // Connect to Database and Launch Application

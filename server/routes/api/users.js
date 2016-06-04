@@ -6,7 +6,6 @@ var express       = require('express'),
 
 // Require Models
 var User          = require('../../models/user');
-var Search        = require('../../models/search');
 
 // Require Passport Strategy
 var passport      = require("../../lib/passportStrategy.js");
@@ -92,29 +91,5 @@ usersRouter.delete('/:username', function(req, res) {
     }
   });
 });
-//
-// // User Edit - Add Search
-// usersRouter.put('/addSearch', function(req, res){
-//
-//   var newSearch = Search({
-//     queryString: req.body.queryString,
-//     count: req.body.count,
-//     firstSearched: req.body.firstSearched,
-//     lastSearched: req.body.lastSearched
-//   });
-//
-//   var cookiesUser = JSON.parse(req.cookies.current_user);
-//   var query = { username: cookiesUser.username };
-//
-//   // Update User based on query with new Favorite
-//   User.update(query, { $push: { "searches": newFavorite } }, function(error, dbUser) {
-//     if (error) {
-//       console.log("Error adding Search query");
-//       res.json(error);
-//     } else {
-//       res.json(newSearch);
-//     }
-//   });
-// });
 
 module.exports = usersRouter;

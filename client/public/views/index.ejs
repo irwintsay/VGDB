@@ -18,8 +18,8 @@
   <body ng-controller="ProfileController">
 
     <div id="header" class="ui small right aligned inverted header">
-      <a ng-click="showLoginForm = true">Login</a>
-      <a ng-click="showSignupForm = true">Create Account</a>
+      <a ng-click="showLoginForm = true; showSignupForm = false" ng-show="showLoginLink">Login</a>
+      <a ng-click="showSignupForm = true; showLoginForm = false" ng-show="showSignupLink">Create Account</a>
     </div>
 
     <div id="profile-screen" ng-show="showSignupForm"></div>

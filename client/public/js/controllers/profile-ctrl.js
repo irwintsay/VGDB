@@ -16,8 +16,12 @@ angular.module('profileController', ['ngCookies'])
     };
 
     // NG-SHOW variables
+    $scope.showSignupLink = true;
+    $scope.showLoginLink = true;
+    $scope.showProfileLink = false;
     $scope.showLoginForm = false;
     $scope.showSignupForm = false;
+
 
     $scope.clearUserModels = function() {
       $scope.newUser = {
@@ -49,8 +53,17 @@ angular.module('profileController', ['ngCookies'])
       });
     };
 
+    $scope.checkCookie = function() {
+      if ($cookies.get("user_token")) {
+        $scope.showSignupLink = false;
+        $scope.showLoginLink = false;
+        $scope.showProfileLink = true;
+      }
+    };
+
     $scope.redirectToContent = function() {
       $window.location.href = "#/search/" + $scope.searchTerm;
     };
 
+    $scope.checkCookie();
   }]);

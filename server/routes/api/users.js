@@ -32,8 +32,13 @@ usersRouter.post('/', function(req, res) {
 // ************************************
 usersRouter.use(passport.authenticate('jwt', { session: false }));
 
+// User Get Current
+usersRouter.get('/current', function(req, res) {
+  res.json(req.user);
+});
+
 // User Get by Username
-usersRouter.get('/:username', function(req, res){
+usersRouter.get('/:username', function(req, res) {
   var query = { username: req.params.username };
   User.findOne(query, function(error, dbUser){
     if (error) {

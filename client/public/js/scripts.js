@@ -61,7 +61,12 @@ function setLoginHandler(){
   });
 };
 
+
+
 $(function() {
-  setSignupHandler();
-  setLoginHandler();
+  // setSignupHandler();
+  // setLoginHandler();
+  $('.ui.dropdown')
+    .dropdown()
+  ;
 });

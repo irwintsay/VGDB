@@ -1,51 +1,83 @@
 <!DOCTYPE html>
-<html ng-app="VGDB">
+<html ng-app="VGDBApp">
   <head>
     <meta charset="utf-8">
-    <title>VGDB</title>
+    <title>Video Game Database</title>
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
     <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.1/js.cookie.min.js" charset="utf-8"></script>
     <script src="/semantic/dist/semantic.min.js"></script>
-    <script src="/js/ang.js" charset="utf-8"></script>
+    <script src="/js/controllers/content-ctrl.js" charset="utf-8"></script>
+    <script src="/js/controllers/profile-ctrl.js" charset="utf-8"></script>
+    <script src="/js/vgdb-module.js" charset="utf-8"></script>
     <script src="/js/scripts.js" charset="utf-8"></script>
   </head>
-  <body ng-controller="VGDBController">
-    <div class="ui container">
-      <h1>VGDB</h1>
-    </div>
-    <div class="ui center aligned container">
-      <form class="ui form" ng-submit="getTwitchStream()">
-        <div class="ui large icon input">
-          <input type="text" placeholder="Search for a game" ng-model="searchTerm">
-          <i class="search icon"></i>
+  <body ng-controller="ProfileController">
+
+    <!-- Header-Nav Profile/Login/Create Account -->
+    <!-- TODO: Fix text alignment for Profile text -->
+    <!-- Might need to change the UI structure to grid element -->
+    <div class="ui grid">
+      <div id="header" class="ui small right aligned inverted header">
+        <a ng-click="showLoginForm = true; showSignupForm = false" ng-show="showLoginLink">Login</a>
+        <a ng-click="showSignupForm = true; showLoginForm = false" ng-show="showSignupLink">Create Account</a>
+        <div id="profile-container" class="ui container">
+          <div class="ui dropdown">
+            <div>
+              <img src="http://streetfighter.com/wp-content/uploads/2015/06/portrait-ryu.jpg" alt="" ng-show="showProfileDetails"/>
+              <h4 ng-show="showProfileDetails">{{ currentUser.username }}</h4>
+              <h4 class="animate" ng-show="showWelcomeGreeting">Welcome back, {{ currentUser.firstName }}</h4>
+            </div>
+            <div id="dropdown-menu" class="menu">
+              <div class="item">
+                <h4>Edit Profile</h4>
+              </div>
+              <div class="item">
+                <h4>Sign out</h4>
+              </div>
+            </div>
+          </div>
         </div>
-        <input class="ui red button" type="submit" value="Search">
+      </div>
+
+      <div id="profile-filter" ng-show="showSignupForm"></div>
+    </div>
+
+    <div id="sign-up-modal" class="modal" ng-show="showSignupForm">
+      <form id="new-user" ng-submit="submitSignupForm()">
+        <div class="ui large inverted transparent input">
+          <input class='' type="text" ng-model="newUser.username" placeholder="Username">
+          <input class='' type="text" ng-model="newUser.email" placeholder="Email">
+          <input class='' type="password" ng-model="newUser.password" placeholder="Password">
+          <input class='' type="text" ng-model="newUser.firstName" placeholder="First Name">
+          <input class='' type="text" ng-model="newUser.lastName" placeholder="Last Name">
+          <input type="submit" value="Sign Up">
+        </div>
       </form>
-      <div id="giantbomb" class="ui container" ng-show="showImage">
-        <h1>{{ gameName }}</h1>
-        <img ng-src="{{ gameImage }}" alt="" />
-      </div>
-      <h1>Live Twitch Stream</h1>
-      <div>
-        <iframe id="twitch-stream"
-          src="http://player.twitch.tv/?channel=ducksauce"
-          height="480"
-          width="640"
-          frameborder="0"
-          scrolling="no"
-          allowfullscreen="true">
-        </iframe>
-      </div>
+    </div>
 
-      <h1>YouTube Content</h1>
-      <div id="video-here">
+    <div id="login-modal" class="modal" ng-show="showLoginForm">
+      <form id="login-user" ng-submit="submitLoginForm()">
+        <div class="ui large inverted input">
+          <input type="text" ng-model="loginUser.username" placeholder="Username">
+        </div>
+        <div class="ui large inverted input">
+          <input type="password" ng-model="loginUser.password" placeholder="Password">
+        </div>
+        <div class="ui large inverted input">
+          <input type="submit" name="login-form" value="Log In">
+        </div>
+      </form>
+    </div>
 
+    <div class="ui container">
+      <div ng-view>
+        <!-- Dynamic View -->
       </div>
-
     </div>
   </body>
 </html>

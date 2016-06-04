@@ -1,8 +1,8 @@
 angular.module('contentController', [])
-  .controller('ContentController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+  .controller('ContentController', ['$scope', '$http', '$routeParams', '$window', function($scope, $http, $routeParams, $window) {
 
     // $scope.searchTerm = '';
-    $scope.searchTerm = $routeParams.query;
+    $scope.searchTerm = $routeParams.query || '';
     $scope.twitchStream ='';
     $scope.allYouTubeVideos = [];
     $scope.giantBombData = null;
@@ -55,6 +55,10 @@ angular.module('contentController', [])
       for (var i = 0; i < $scope.allYouTubeVideos.length; i++) {
         buildVideo($scope.allYouTubeVideos[i].id.videoId);
       }
+    };
+
+    $scope.redirectToContent = function() {
+      $window.location.href = "#/search/" + $scope.searchTerm;
     };
 
     $scope.getAllYouTubeVideos();

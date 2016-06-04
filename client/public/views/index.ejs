@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="/semantic/dist/semantic.min.js"></script>
     <script src="/js/controllers/content-ctrl.js" charset="utf-8"></script>
@@ -17,12 +18,34 @@
   </head>
   <body ng-controller="ProfileController">
 
-    <div id="header" class="ui small right aligned inverted header">
-      <a ng-click="showLoginForm = true; showSignupForm = false" ng-show="showLoginLink">Login</a>
-      <a ng-click="showSignupForm = true; showLoginForm = false" ng-show="showSignupLink">Create Account</a>
-    </div>
+    <!-- Header-Nav Profile/Login/Create Account -->
+    <!-- TODO: Fix text alignment for Profile text -->
+    <!-- Might need to change the UI structure to grid element -->
+    <div class="ui grid">
+      <div id="header" class="ui small right aligned inverted header">
+        <a ng-click="showLoginForm = true; showSignupForm = false" ng-show="showLoginLink">Login</a>
+        <a ng-click="showSignupForm = true; showLoginForm = false" ng-show="showSignupLink">Create Account</a>
+        <div id="profile-container" class="ui container">
+          <div class="ui dropdown">
+            <div>
+              <img src="http://streetfighter.com/wp-content/uploads/2015/06/portrait-ryu.jpg" alt="" ng-show="showProfileDetails"/>
+              <h4 ng-show="showProfileDetails">{{ currentUser.username }}</h4>
+              <h4 class="animate" ng-show="showWelcomeGreeting">Welcome back, {{ currentUser.firstName }}</h4>
+            </div>
+            <div id="dropdown-menu" class="menu">
+              <div class="item">
+                <h4>Edit Profile</h4>
+              </div>
+              <div class="item">
+                <h4>Sign out</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div id="profile-screen" ng-show="showSignupForm"></div>
+      <div id="profile-filter" ng-show="showSignupForm"></div>
+    </div>
 
     <div id="sign-up-modal" class="modal" ng-show="showSignupForm">
       <form id="new-user" ng-submit="submitSignupForm()">
@@ -51,8 +74,10 @@
       </form>
     </div>
 
-    <div ng-view>
-      <!-- Dynamic View -->
+    <div class="ui container">
+      <div ng-view>
+        <!-- Dynamic View -->
+      </div>
     </div>
   </body>
 </html>

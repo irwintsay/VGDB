@@ -1,5 +1,9 @@
 angular.module('profileController', ['ngCookies'])
-  .controller('ProfileController', ['$scope', '$http', '$cookies', '$window', function($scope, $http, $cookies, $window) {
+  .controller('ProfileController',
+  ['$scope', '$http', '$cookies', '$timeout',
+  function($scope, $http, $cookies, $timeout) {
+
+    $scope.currentUser = {};
 
     // NG-MODEL variables
     $scope.searchTerm = '';
@@ -18,7 +22,11 @@ angular.module('profileController', ['ngCookies'])
     // NG-SHOW variables
     $scope.showSignupLink = true;
     $scope.showLoginLink = true;
+
     $scope.showProfileLink = false;
+    $scope.showWelcomeGreeting = false;
+    $scope.showProfileDetails = true;
+
     $scope.showLoginForm = false;
     $scope.showSignupForm = false;
 
@@ -35,6 +43,20 @@ angular.module('profileController', ['ngCookies'])
         username:   '',
         password:   ''
       };
+    };
+
+    $scope.getCurrentUser = function() {
+      $http.get('/api/users/current').then(function(response) {
+        $scope.currentUser = response.data;
+
+        // Display Welcome Greeting for 5s
+        if ($scope.currentUser.firstName) {
+          $scope.showWelcomeGreeting = true;
+          $timeout(function() {
+            $scope.showWelcomeGreeting = false;
+          }, 5000);
+        }
+      });
     };
 
     $scope.submitSignupForm = function() {
@@ -58,11 +80,12 @@ angular.module('profileController', ['ngCookies'])
         $scope.showSignupLink = false;
         $scope.showLoginLink = false;
         $scope.showProfileLink = true;
+        $scope.getCurrentUser();
       }
     };
 
-    $scope.redirectToContent = function() {
-      $window.location.href = "#/search/" + $scope.searchTerm;
+    $scope.hideWelcomeGreeting = function() {
+      $scope.showWelcomeGreeting = false;
     };
 
     $scope.checkCookie();

@@ -1,10 +1,6 @@
-// angular.module('VGDBApp', [
-//   'loginController',
-//   'contentController'
-// ]);
-
 angular.module('VGDBApp', [
   'ngRoute',
+  'ngAnimate',
   'contentController',
   'profileController'
 ])

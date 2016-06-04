@@ -15,6 +15,14 @@ a {
   color: white;
 }
 
+.animate {
+  transition: all linear 0.5s
+}
+
+.animate.ng-hide {
+  opacity: 0;
+}
+
 #header {
   position: fixed;
   top: 0;
@@ -27,7 +35,26 @@ a {
   cursor: pointer;
 }
 
-#profile-screen {
+#header h4 {
+  margin: 0;
+}
+
+#profile-container {
+  /*width: 150px;
+  text-align: center;*/
+}
+
+#header img {
+  height: 80px;
+  border-radius: 50%;
+}
+
+#dropdown-menu {
+  color: white;
+  z-index: 100;
+}
+
+#profile-filter {
   position: fixed;
   top: 0;
   left: 0;
@@ -100,7 +127,7 @@ span.title {
   display: inline;
 }
 
-#screen {
+#welcome-filter {
   position: fixed;
   top: 0;
   left: 0;

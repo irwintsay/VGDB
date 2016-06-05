@@ -67,4 +67,5 @@ $(function() {
   // setSignupHandler();
   // setLoginHandler();
   $('.ui.dropdown').dropdown();
+  // $('.ui.modal').modal('show');
 });

@@ -56,7 +56,8 @@ usersRouter.put('/edit', function(req, res){
     username: req.body.username,
     email: req.body.email,
     firstName: req.body.firstName,
-    lastName: req.body.lastName
+    lastName: req.body.lastName,
+    avatarUrl: req.body.avatarUrl
   };
   var cookiesUser = JSON.parse(req.cookies.current_user);
   var query = { username: cookiesUser.username };

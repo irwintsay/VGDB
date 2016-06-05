@@ -1,13 +1,16 @@
+<!-- TODO: Move Title to index page with Profile and hide/show -->
 <div class="ui container">
   <h1>VGDB</h1>
 </div>
-<div class="ui center aligned container">
-  <form class="ui form" ng-submit="getTwitchStream()">
+
+<div id="main-content" class="ui center aligned container">
+  <form class="ui form" >
     <div class="ui large icon input">
       <input type="text" placeholder="Search for a game" ng-model="searchTerm">
       <i class="search icon"></i>
     </div>
-    <input class="ui red button" type="submit" value="Search">
+    <!-- <input class="ui red button" type="submit" value="Search"> -->
+    <a class="ui red button" href="#/search/{{ searchTerm }}">Search</a>
   </form>
   <div id="giantbomb" class="ui container" ng-show="showImage">
     <h1>{{ gameName }}</h1>
@@ -16,7 +19,7 @@
   <h1>Live Twitch Stream</h1>
   <div>
     <iframe id="twitch-stream"
-      src="http://player.twitch.tv/?channel=ducksauce"
+      src=""
       height="480"
       width="640"
       frameborder="0"

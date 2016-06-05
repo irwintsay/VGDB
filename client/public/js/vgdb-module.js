@@ -1,6 +1,7 @@
 angular.module('VGDBApp', [
   'ngRoute',
   'ngAnimate',
+  'ngCookies',
   'contentController',
   'profileController'
 ])

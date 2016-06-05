@@ -6,12 +6,13 @@ var searchSchema      = mongoose.Schema({
   queryString: {
     type:         String,
     required:     true,
-    unique:       true
+    unique:       true,
+    lowercase:    true
   },
   count: {
     type:         Number,
     required:     true,
-    default:      0 // Might not need to set a default for this field
+    default:      1 // Might not need to set a default for this field
   },
   firstSearched: {
     type:         Date
@@ -20,7 +21,7 @@ var searchSchema      = mongoose.Schema({
     type:         Date
   },
   users: [{
-    user_id: {
+    user: {
       type:       String
     },
     summary: {

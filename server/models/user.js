@@ -26,6 +26,9 @@ var userSchema        = mongoose.Schema({
   },
   lastName: {
     type:       String
+  },
+  avatarUrl: {
+    type:       String
   }
 }, { timestamps: true });
 

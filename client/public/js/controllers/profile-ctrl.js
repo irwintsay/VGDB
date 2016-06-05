@@ -1,9 +1,12 @@
 angular.module('profileController', ['ngCookies'])
   .controller('ProfileController',
-  ['$scope', '$http', '$cookies', '$timeout',
-  function($scope, $http, $cookies, $timeout) {
+  ['$scope', '$http', '$cookies', '$timeout', '$location', '$route',
+  function($scope, $http, $cookies, $timeout, $location, $route) {
 
     $scope.currentUser = {};
+
+    $scope.blankUserAvatar = 'https://www.groupmuse.com/assets/empty_user.jpg';
+    $scope.currentAvatar = 'https://www.groupmuse.com/assets/empty_user.jpg';
 
     // NG-MODEL variables
     $scope.searchTerm = '';
@@ -12,7 +15,8 @@ angular.module('profileController', ['ngCookies'])
       email:      '',
       password:   '',
       firstName:  '',
-      lastName:   ''
+      lastName:   '',
+      avatarUrl:  ''
     };
     $scope.loginUser = {
       username:   '',
@@ -27,8 +31,8 @@ angular.module('profileController', ['ngCookies'])
     $scope.showWelcomeGreeting = false;
     $scope.showProfileDetails = true;
 
-    $scope.showLoginForm = false;
-    $scope.showSignupForm = false;
+    // $scope.showLoginForm = false;
+    // $scope.showSignupForm = false;
 
 
     $scope.clearUserModels = function() {
@@ -37,7 +41,8 @@ angular.module('profileController', ['ngCookies'])
         email:      '',
         password:   '',
         firstName:  '',
-        lastName:   ''
+        lastName:   '',
+        avatarUrl:  ''
       };
       $scope.loginUser = {
         username:   '',
@@ -46,32 +51,46 @@ angular.module('profileController', ['ngCookies'])
     };
 
     $scope.getCurrentUser = function() {
-      $http.get('/api/users/current').then(function(response) {
-        $scope.currentUser = response.data;
-
-        // Display Welcome Greeting for 5s
-        if ($scope.currentUser.firstName) {
-          $scope.showWelcomeGreeting = true;
-          $timeout(function() {
-            $scope.showWelcomeGreeting = false;
-          }, 5000);
-        }
-      });
+      if($cookies.get("user_token")) {
+        $http.get('/api/users/current').then(function(response) {
+          $scope.currentUser = response.data;
+          if ($scope.currentUser.avatarUrl) {
+            $scope.currentAvatar = $scope.currentUser.avatarUrl;
+          }
+          // Display Welcome Greeting for 5s
+          if ($scope.currentUser.firstName) {
+            $scope.showWelcomeGreeting = true;
+            $timeout(function() {
+              $scope.showWelcomeGreeting = false;
+            }, 5000);
+          }
+        });
+      }
     };
 
-    $scope.submitSignupForm = function() {
-      $http.post('/api/users', $scope.newUser).then(function(response) {
-        $cookies.put('user_token', response.data.token);
-        $scope.clearUserModels();
-        $scope.showSignupForm = false;
-      });
+    $scope.showLoginForm = function() {
+      $('#login.ui.modal').modal('show');
     };
 
     $scope.submitLoginForm = function() {
       $http.post('/api/auth', $scope.loginUser).then(function(response) {
+        $('#login.ui.modal').modal('hide');
         $cookies.put('user_token', response.data.token);
         $scope.clearUserModels();
-        $scope.showLoginForm = false;
+        $scope.checkCookie();
+      });
+    };
+
+    $scope.showSignupForm = function() {
+      $('#signup.ui.modal').modal('show');
+    };
+
+    $scope.submitSignupForm = function() {
+      $http.post('/api/users', $scope.newUser).then(function(response) {
+        $('#signup.ui.modal').modal('hide');
+        $cookies.put('user_token', response.data.token);
+        $scope.clearUserModels();
+        $scope.checkCookie();
       });
     };
 
@@ -86,6 +105,13 @@ angular.module('profileController', ['ngCookies'])
 
     $scope.hideWelcomeGreeting = function() {
       $scope.showWelcomeGreeting = false;
+    };
+    $scope.signOut = function() {
+      $cookies.remove("user_token");
+      // $location.url('#/');
+      $scope.currentUser = {};
+      $scope.currentAvatar = $scope.blankUserAvatar;
+      $route.reload();
     };
 
     $scope.checkCookie();

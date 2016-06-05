@@ -24,11 +24,16 @@ a {
 }
 
 #header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 21;
+  padding-top: 30px;
+}
+
+#header a {
+  color: black;
 }
 
 #header a:hover {
@@ -39,14 +44,22 @@ a {
   margin: 0;
 }
 
-#profile-container {
-  /*width: 150px;
-  text-align: center;*/
+#header h5 {
+  margin: 0;
 }
 
 #header img {
-  height: 80px;
+  height: 75px;
   border-radius: 50%;
+  margin-left: 25px;
+}
+
+#profile {
+  width: 150px;
+}
+
+#profile h4 {
+  margin-left: 40px;
 }
 
 #dropdown-menu {
@@ -54,18 +67,7 @@ a {
   z-index: 100;
 }
 
-#profile-filter {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  opacity: .3;
-  z-index: 15;
-  background-color: red;
-}
-
-.modal {
+/*.modal {
   position: fixed;
   top: 40%;
   left: 0;
@@ -73,7 +75,7 @@ a {
   width: 100%;
   z-index: 20;
   text-align: center;
-}
+}*/
 
 #welcome {
   position: fixed;
@@ -125,6 +127,10 @@ span.title {
 
 #video-here {
   display: inline;
+}
+
+#main-content {
+  margin-top: 105px;
 }
 
 #welcome-filter {

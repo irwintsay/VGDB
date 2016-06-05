@@ -4,12 +4,13 @@
 </div>
 
 <div id="main-content" class="ui center aligned container">
-  <form class="ui form" ng-submit="search()">
+  <form class="ui form" >
     <div class="ui large icon input">
       <input type="text" placeholder="Search for a game" ng-model="searchTerm">
       <i class="search icon"></i>
     </div>
-    <input class="ui red button" type="submit" value="Search">
+    <!-- <input class="ui red button" type="submit" value="Search"> -->
+    <a class="ui red button" href="#/search/{{ searchTerm }}">Search</a>
   </form>
   <div id="giantbomb" class="ui container" ng-show="showImage">
     <h1>{{ gameName }}</h1>

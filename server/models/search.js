@@ -6,7 +6,8 @@ var searchSchema      = mongoose.Schema({
   queryString: {
     type:         String,
     required:     true,
-    unique:       true
+    unique:       true,
+    lowercase:    true
   },
   count: {
     type:         Number,
@@ -20,7 +21,7 @@ var searchSchema      = mongoose.Schema({
     type:         Date
   },
   users: [{
-    user_id: {
+    user: {
       type:       String
     },
     summary: {

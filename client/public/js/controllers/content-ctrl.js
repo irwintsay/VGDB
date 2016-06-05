@@ -21,14 +21,14 @@ angular.module('contentController', [])
       if ($scope.queryExists()) {
         if ($scope.currentUser._id && !$scope.searchedBefore()) {
           payload = {
-            user_id: $scope.currentUser._id,
+            user: $scope.currentUser._id,
             summary: $scope.summary
           };
           console.log("Payload created");
           console.log(payload);
         }
         $http.put('/api/searches/' + $scope.searchTerm, payload).then(function(response) {
-          console.log(response.data);
+          console.log("PUT SUCCESSFUL");
         });
       } else {
         console.log("ID");
@@ -37,7 +37,7 @@ angular.module('contentController', [])
           payload = {
             queryString: $scope.searchTerm,
             users: [{
-              user_id: $scope.currentUser._id,
+              user: $scope.currentUser._id,
               summary: ""
             }]
           }
@@ -55,16 +55,21 @@ angular.module('contentController', [])
     };
 
     $scope.getCurrentUser = function() {
-      $http.get('/api/users/current').then(function(response) {
-        $scope.currentUser = response.data;
-        console.log($scope.currentUser);
-        $scope.getAllSearches();
-      });
+      if ($cookies.get("user_token")) {
+        $http.get('/api/users/current').then(function(response) {
+          $scope.currentUser = response.data;
+          console.log($scope.currentUser);
+          $scope.getAllSearches();
+        });
+      }
     };
 
     $scope.getAllSearches = function() {
       $http.get('/api/searches').then(function(response) {
+        console.log("THIS IS ALL THE SEARCHES RESPONSE");
+        console.log(response.data);
         $scope.allSearches = response.data;
+        console.log("THIS IS ALL THE SEARCHES");
         console.log($scope.allSearches);
         $scope.search();
       });
@@ -73,22 +78,26 @@ angular.module('contentController', [])
     $scope.queryExists = function() {
       var exists = false;
       $scope.allSearches.forEach(function(s) {
+        console.log($scope.matchedSearch);
         if (s.queryString == $scope.searchTerm) {
           exists = true;
           $scope.matchedSearch = s;
         }
       });
+      console.log($scope.matchedSearch);
       console.log("query exists? " + exists);
       return exists;
     };
 
     $scope.searchedBefore = function() {
       var searched = false;
+      console.log($scope.matchedSearch.users);
       $scope.matchedSearch.users.forEach(function(u) {
-        if (u.user_id = $scope.currentUser._id) {
+        if (u.user = $scope.currentUser._id) {
           searched = true;
         }
       });
+      console.log("Searched before? " + searched);
       return searched;
     };
 

@@ -10,6 +10,8 @@ var Search          = require('../../models/search');
 // Search: Get All
 searchesRouter.get('/', function(req, res) {
   Search.find(function(error, response) {
+    console.log("YOYO");
+    console.log(response);
     res.json(response);
   });
 });
@@ -62,7 +64,7 @@ searchesRouter.put('/add-summary/:queryString', function(req, res) {
   var query = { queryString: req.params.queryString };
   Search.update({
     queryString: req.params.queryString,
-    "users.user_id": id
+    "users.user": id
   }, { $set: { "users.$.summary": summary } }, function(error, response) {
     console.log(response);
     res.json(response);

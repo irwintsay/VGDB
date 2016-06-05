@@ -46,17 +46,19 @@ angular.module('profileController', ['ngCookies'])
     };
 
     $scope.getCurrentUser = function() {
-      $http.get('/api/users/current').then(function(response) {
-        $scope.currentUser = response.data;
+      if($cookies.get("user_token")) {
+        $http.get('/api/users/current').then(function(response) {
+          $scope.currentUser = response.data;
 
-        // Display Welcome Greeting for 5s
-        if ($scope.currentUser.firstName) {
-          $scope.showWelcomeGreeting = true;
-          $timeout(function() {
-            $scope.showWelcomeGreeting = false;
-          }, 5000);
-        }
-      });
+          // Display Welcome Greeting for 5s
+          if ($scope.currentUser.firstName) {
+            $scope.showWelcomeGreeting = true;
+            $timeout(function() {
+              $scope.showWelcomeGreeting = false;
+            }, 5000);
+          }
+        });
+      }
     };
 
     $scope.submitSignupForm = function() {

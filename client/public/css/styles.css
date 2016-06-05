@@ -24,7 +24,7 @@ a {
 }
 
 #header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -125,6 +125,10 @@ span.title {
 
 #video-here {
   display: inline;
+}
+
+#main-content {
+  margin-top: 105px;
 }
 
 #welcome-filter {

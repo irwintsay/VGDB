@@ -16,6 +16,7 @@ searchesRouter.get('/', function(req, res) {
 
 // Search: Create
 searchesRouter.post('/', function(req, res) {
+  console.log(req.body);
   Search.create(req.body, function(error, dbSearch) {
     if (error) {
       console.log("Error saving Search");

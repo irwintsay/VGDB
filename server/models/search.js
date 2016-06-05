@@ -11,7 +11,7 @@ var searchSchema      = mongoose.Schema({
   count: {
     type:         Number,
     required:     true,
-    default:      0 // Might not need to set a default for this field
+    default:      1 // Might not need to set a default for this field
   },
   firstSearched: {
     type:         Date

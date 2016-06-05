@@ -34,7 +34,7 @@ a {
 
 #profile-container img {
   height: 75px;
-  border-radius: 50%;
+  border-radius: 2rem;
 }
 
 #profile-container h4, #profile-container h5 {
@@ -97,6 +97,26 @@ span.title {
 
 #welcome h2 {
   font-family: 'Indie Flower';
+}
+
+#title-bar {
+  padding-top: 30px;
+  padding-left: 50px;
+  height: 75px;
+}
+
+#title-bar a {
+  font-family: 'Lato';
+  font-size: 3rem;
+  padding: 0 10px;
+  color: white;
+  background-color: black;
+}
+
+#title-bar span {
+  font-family: 'Indie Flower';
+  padding-left: 20px;
+  font-size: 1.5rem;
 }
 
 #giantbomb img {

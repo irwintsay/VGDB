@@ -26,7 +26,7 @@ a {
 #profile-container {
   position: absolute;
   top: 0;
-  left: 80%;
+  right: 7%;
   width: 15%;
   z-index: 21;
   padding-top: 20px;
@@ -37,7 +37,7 @@ a {
   border-radius: 2rem;
 }
 
-#profile-container h4, #profile-container h5 {
+#profile-container h3, #profile-container h5 {
   margin: 0;
 }
 
@@ -119,25 +119,33 @@ span.title {
   font-size: 1.5rem;
 }
 
-#giantbomb img {
-  height: 400px;
-}
-
 #video-here {
   display: inline;
 }
 
 #search-field {
   position: relative;
-  margin-top: 105px;
+  margin-top: 40px;
+  background-color: black;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #main-content{
   position: relative;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
+#giantbomb {
+  text-align: center;
+}
 
+#giantbomb-title {
+  width: 200px;
+  margin: 0 auto;
+}
 
 #welcome-filter {
   position: fixed;
@@ -170,66 +178,66 @@ span.title {
   background-size: cover;
 }
 
-.one {
+.bgimage.one {
   background-image: url('../media/mgif1.gif');
 }
 
-.two {
+.bgimage.two {
   background-image: url('../media/mgif2.gif');
 }
 
-.three {
+.bgimage.three {
   background-image: url('../media/mgif3.gif');
 }
 
-.four {
+.bgimage.four {
   background-image: url('../media/mgif4.gif');
 }
 
-.five {
+.bgimage.five {
   background-image: url('../media/mgif5.gif');
 }
 
-.six {
+.bgimage.six {
   background-image: url('../media/mgif6.gif');
 }
 
-.seven {
+.bgimage.seven {
   background-image: url('../media/mgif7.gif');
 }
 
-.eight {
+.bgimage.eight {
   background-image: url('../media/mgif8.gif');
 }
 
-.nine {
+.bgimage.nine {
   background-image: url('../media/mgif9.gif');
 }
 
-.ten {
+.bgimage.ten {
   background-image: url('../media/mgif10.gif');
 }
 
-.eleven {
+.bgimage.eleven {
   background-image: url('../media/mgif11.gif');
 }
 
-.twelve {
+.bgimage.twelve {
   background-image: url('../media/mgif12.gif');
 }
 
-.thirteen {
+.bgimage.thirteen {
   background-image: url('../media/mgif13.gif');
 }
 
-.fourteen {
+.bgimage.fourteen {
   background-image: url('../media/mgif14.gif');
 }
 
-.fifteen {
+.bgimage.fifteen {
   background-image: url('../media/mgif15.gif');
 }
 
-.sixteen {
+.bgimage.sixteen {
   background-image: url('../media/mgif16.gif');
 }

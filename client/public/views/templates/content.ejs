@@ -16,10 +16,31 @@
 </div>
 
 <div id="main-content" class="ui grid">
-  <div id="giantbomb" class="ui container" ng-show="showImage">
-    <h1>{{ gameName }}</h1>
-    <img ng-src="{{ gameImage }}" alt="" />
+  <div class="six wide column">
+    <div id="giantbomb" class="ui image" ng-show="showImage">
+      <img class="contain" ng-src="{{ gameImage }}" alt="" />
+    </div>
   </div>
+  <div class="six wide column">
+    <div>
+      <h1 class="ui center aligned header">{{ giantBombData.name }}</h1>
+    </div>
+    <div class="ui header">
+      <h4>{{ giantBombData.deck }}</h4>
+    </div>
+    <div class="">
+      <p>
+        Release Date: {{ giantBombData.original_release_date }}
+      </p>
+      <h4>Platforms: </h4>
+      <div class="ui list">
+        <div class="item" ng-repeat="platform in giantBombData.platforms">{{ platform.name }}</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="ui grid">
   <h1>Live Twitch Stream</h1>
   <div>
     <iframe id="twitch-stream"

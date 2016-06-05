@@ -23,59 +23,37 @@ a {
   opacity: 0;
 }
 
-#header {
+#profile-container {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 80%;
+  width: 15%;
   z-index: 21;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
-#header a {
-  color: black;
-}
-
-#header a:hover {
-  cursor: pointer;
-}
-
-#header h4 {
-  margin: 0;
-}
-
-#header h5 {
-  margin: 0;
-}
-
-#header img {
+#profile-container img {
   height: 75px;
   border-radius: 50%;
-  margin-left: 25px;
+}
+
+#profile-container h4, #profile-container h5 {
+  margin: 0;
+}
+
+#profile-container a {
+  color: black;
 }
 
 #profile {
   width: 150px;
-}
-
-#profile h4 {
-  margin-left: 40px;
+  text-align: center;
 }
 
 #dropdown-menu {
   color: white;
   z-index: 100;
 }
-
-/*.modal {
-  position: fixed;
-  top: 40%;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  z-index: 20;
-  text-align: center;
-}*/
 
 #welcome {
   position: fixed;
@@ -129,9 +107,17 @@ span.title {
   display: inline;
 }
 
-#main-content {
+#search-field {
+  position: relative;
   margin-top: 105px;
 }
+
+#main-content{
+  position: relative;
+  margin-top: 100px;
+}
+
+
 
 #welcome-filter {
   position: fixed;

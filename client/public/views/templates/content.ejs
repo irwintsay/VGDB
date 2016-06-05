@@ -1,9 +1,9 @@
 <!-- TODO: Move Title to index page with Profile and hide/show -->
 <div class="ui container">
-  <h1>VGDB</h1>
+  <h1 class="ui header">VGDB</h1>
 </div>
 
-<div id="main-content" class="ui center aligned container">
+<div id="search-field" class="ui center aligned container">
   <form class="ui form" >
     <div class="ui large icon input">
       <input type="text" placeholder="Search for a game" ng-model="searchTerm">
@@ -12,6 +12,9 @@
     <!-- <input class="ui red button" type="submit" value="Search"> -->
     <a class="ui red button" href="#/search/{{ searchTerm }}">Search</a>
   </form>
+</div>
+
+<div id="main-content" class="ui grid">
   <div id="giantbomb" class="ui container" ng-show="showImage">
     <h1>{{ gameName }}</h1>
     <img ng-src="{{ gameImage }}" alt="" />
@@ -32,5 +35,4 @@
   <div id="video-here">
 
   </div>
-
 </div>

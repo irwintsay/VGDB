@@ -19,36 +19,28 @@
   <body ng-controller="ProfileController">
 
     <!-- Header-Nav Profile/Login/Create Account -->
-    <!-- TODO: Fix text alignment for Profile text -->
-    <!-- Might need to change the UI structure to grid element -->
-    <div class="ui grid">
-      <div id="header" class="ui small right aligned inverted header">
-        <div id="profile-container" class="ui container">
-          <div class="ui dropdown">
-            <div id="profile">
-              <img ng-src="{{ currentAvatar }}" alt="" ng-show="showProfileDetails"/>
-              <h4 id="username" ng-show="showProfileDetails">{{ currentUser.username }}</h4>
-              <h5 id="greeting" class="animate" ng-show="showWelcomeGreeting">Welcome back, {{ currentUser.firstName }}</h5>
-            </div>
-            <div id="dropdown-menu" class="menu">
-              <div class="item">
-                <a ng-click="showLoginForm()"><h4>Login</h4></a>
-              </div>
-              <div class="item">
-                <a ng-click="showSignupForm()"><h4>Create Account</h4></a>
-              </div>
-              <div class="item">
-                <h4>Edit Profile</h4>
-              </div>
-              <div class="item">
-                <a href="#/" ng-click="signOut()"><h4>Sign out</h4></a>
-
-              </div>
-            </div>
+    <div id="profile-container" class="ui small center aligned inverted header">
+      <div class="ui dropdown">
+        <div id="profile">
+          <img ng-src="{{ currentAvatar }}" alt="" ng-show="showProfileDetails"/>
+          <h4 id="username" ng-show="showProfileDetails">{{ currentUser.username }}</h4>
+          <h5 id="greeting" class="animate" ng-show="showWelcomeGreeting">Welcome back, {{ currentUser.firstName }}</h5>
+        </div>
+        <div id="dropdown-menu" class="menu">
+          <div class="item">
+            <a ng-click="showLoginForm()"><h4>Login</h4></a>
+          </div>
+          <div class="item">
+            <a ng-click="showSignupForm()"><h4>Create Account</h4></a>
+          </div>
+          <div class="item">
+            <h4>Edit Profile</h4>
+          </div>
+          <div class="item">
+            <a href="#/" ng-click="signOut()"><h4>Sign out</h4></a>
           </div>
         </div>
       </div>
-
     </div>
 
     <div id="login" class="ui modal">

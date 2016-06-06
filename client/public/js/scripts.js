@@ -14,6 +14,21 @@ function changeTwitchSource(source) {
   $twitch.attr("src", url);
 };
 
+function insertDescription(gameText) {
+  var n = gameText.search("<p>");
+  gameText = gameText.substring(n,gameText.length);
+  n = gameText.search("<h2>");
+  gameText = gameText.substring(0,n);
+  console.log(gameText);
+  var $temp = $('<div>').html(gameText);
+  var straightText = $temp.text();
+  console.log(straightText);
+  // var n = straightText.search("Gameplay");
+  // console.log(n);
+  // straightText = straightText.substring(8,n);
+  $('#giantbomb-description').text(straightText);
+};
+
 $(function() {
   $('.ui.dropdown').dropdown();
 });

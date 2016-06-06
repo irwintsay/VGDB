@@ -114,6 +114,7 @@ angular.module('contentController', [])
           console.log($scope.giantBombData);
           $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.image.super_url;
           $scope.showImage = true;
+          insertDescription($scope.giantBombData.description);
         });
       });
     };

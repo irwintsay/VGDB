@@ -1,9 +1,10 @@
 <!-- TODO: Move Title to index page with Profile and hide/show -->
-<div class="ui container">
-  <h1>VGDB</h1>
+<div id="title-bar" class="ui container">
+  <a href="#/" class="ui header button">VGDB</a>
+  <span>Scalable, globally sourced, platform agnostic, video game information</span>
 </div>
 
-<div id="main-content" class="ui center aligned container">
+<div id="search-field" class="ui center aligned container">
   <form class="ui form" >
     <div class="ui large icon input">
       <input type="text" placeholder="Search for a game" ng-model="searchTerm">
@@ -12,25 +13,64 @@
     <!-- <input class="ui red button" type="submit" value="Search"> -->
     <a class="ui red button" href="#/search/{{ searchTerm }}">Search</a>
   </form>
-  <div id="giantbomb" class="ui container" ng-show="showImage">
-    <h1>{{ gameName }}</h1>
-    <img ng-src="{{ gameImage }}" alt="" />
+</div>
+
+<div id="main-content" class="ui grid">
+  <div class="five wide column">
+    <div id="giantbomb" class="ui image" ng-show="showImage">
+      <img ng-src="{{ gameImage }}" alt="" />
+    </div>
   </div>
+  <div class="six wide column">
+    <div>
+      <h1 class="ui center aligned header">{{ giantBombData.name }}</h1>
+    </div>
+    <div class="ui header">
+      <h4>{{ giantBombData.deck }}</h4>
+    </div>
+    <div class="">
+      <h4>Release Date:</h4>
+      <p>
+        {{ giantBombData.original_release_date }}
+      </p>
+      <h4>Platforms: </h4>
+      <div class="ui list">
+        <div class="item" ng-repeat="platform in giantBombData.platforms">{{ platform.name }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="five wide column">
+    <img id="twitch-logo" class="ui centered image"src="../../media/twitch-logo-smallest.png" alt="" />
+    <!-- <div class="video-container">
+      <iframe id="twitch-stream"
+        src=""
+        height="480"
+        width="640"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen="true"
+        autoplay="true">
+      </iframe>
+    </div> -->
+    <div class="ui embed" data-url="http://player.twitch.tv/?channel=RealKraftyy" data-placeholder="" data-icon="right circle arrow">
+    </div>
+  </div>
+</div>
+<div class="ui grid">
   <h1>Live Twitch Stream</h1>
   <div>
-    <iframe id="twitch-stream"
+    <!-- <iframe id="twitch-stream"
       src=""
       height="480"
       width="640"
       frameborder="0"
       scrolling="no"
       allowfullscreen="true">
-    </iframe>
+    </iframe> -->
   </div>
 
   <h1>YouTube Content</h1>
   <div id="video-here">
 
   </div>
-
 </div>

@@ -108,7 +108,6 @@ angular.module('profileController', ['ngCookies'])
     };
     $scope.signOut = function() {
       $cookies.remove("user_token");
-      // $location.url('#/');
       $scope.currentUser = {};
       $scope.currentAvatar = $scope.blankUserAvatar;
       $route.reload();

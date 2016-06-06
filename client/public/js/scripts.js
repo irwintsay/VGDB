@@ -14,58 +14,6 @@ function changeTwitchSource(source) {
   $twitch.attr("src", url);
 };
 
-
-// function setSignupHandler(){
-//   $("#new-user").submit(function(e){
-//     e.preventDefault();
-//
-//     var payload = {
-//       username:   $('#new-user').find('[name=username]').val(),
-//       email:      $('#new-user').find('[name=email]').val(),
-//       password:   $('#new-user').find('[name=password]').val(),
-//       firstName:  $('#new-user').find('[name=firstName]').val(),
-//       lastName:   $('#new-user').find('[name=lastName]').val()
-//     };
-//     console.log(payload);
-//     $.ajax({
-//       url:      '/api/users',
-//       method:   'post',
-//       data:     payload,
-//       success: function(data) {
-//         Cookies.set('user_token', data.token);
-//         location.reload();
-//       }
-//     });
-//   });
-// };
-
-// function setLoginHandler(){
-//   $("#login-user").submit(function(e){
-//     e.preventDefault();
-//     var payload = {
-//       username:     $('#login-user').find('[name=username]').val(),
-//       password:     $('#login-user').find('[name=password]').val()
-//     };
-//
-//     $.ajax({
-//       url:        '/api/auth',
-//       method:     'post',
-//       data:       payload,
-//       success:    function(data) {
-//         console.log("Successful login");
-//         Cookies.set("user_token", data.token);
-//         // location.reload();
-//         window.location.href = "/main";
-//       }
-//     });
-//   });
-// };
-
-
-
 $(function() {
-  // setSignupHandler();
-  // setLoginHandler();
   $('.ui.dropdown').dropdown();
-  // $('.ui.modal').modal('show');
 });

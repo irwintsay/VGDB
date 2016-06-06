@@ -106,13 +106,15 @@ angular.module('contentController', [])
     $scope.getGiantBombData = function() {
       var query = "https://www.giantbomb.com/api/search?json_callback=JSON_CALLBACK&api_key=1881a2a0f53e3677a2fd6d34be616c2e1e86e957&format=jsonp&resources=game&limit=1&query=" + $scope.searchTerm;
       $http.jsonp(query).then(function(response) {
-        $scope.giantBombData = response.data;
-
-        $scope.gameName = $scope.giantBombData.results[0].name;
-        console.log($scope.giantBombData.results[0].name);
-        $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.results[0].image.super_url;
-        console.log($scope.gameImage);
-        $scope.showImage = true;
+        var gameID = response.data.results[0].id;
+        var queryB = "https://www.giantbomb.com/api/game/" + gameID + "/?json_callback=JSON_CALLBACK&api_key=1881a2a0f53e3677a2fd6d34be616c2e1e86e957&format=jsonp";
+        $http.jsonp(queryB).then(function(response) {
+          console.log("SECOND GIANTBOMB QUERY");
+          $scope.giantBombData = response.data.results;
+          console.log($scope.giantBombData);
+          $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.image.super_url;
+          $scope.showImage = true;
+        });
       });
     };
 
@@ -122,9 +124,14 @@ angular.module('contentController', [])
 
     $scope.getTwitchStream = function() {
       $http.get('https://api.twitch.tv/kraken/streams?limit=1&game=' + $scope.searchTerm).then(function(response) {
+        // console.log("TWITCH REPLY");
+        // console.log(response.data);
         $scope.twitchStream = response.data.streams[0].channel.display_name;
+        console.log(response.data.streams[0].preview.medium);
         // console.log($scope.twitchStream);
         $scope.resetTwitchStream($scope.twitchStream);
+        $('.ui.embed').embed();
+
       });
     };
 

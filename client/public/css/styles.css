@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
-
 * {
   box-sizing: border-box;
 }
@@ -29,7 +28,7 @@ a {
   right: 7%;
   width: 15%;
   z-index: 21;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 #profile-container img {
@@ -78,6 +77,14 @@ a {
   font-weight: 900;
 }
 
+.ui.search.form {
+  margin-top: 20px;
+}
+
+.ui.search.button {
+  margin-left: 20px;
+}
+
 span.title {
   margin: 0 2rem;
   animation: spread 2s ease 1;
@@ -93,6 +100,14 @@ span.title {
   100% {
     margin: 0 2rem;
   }
+}
+
+.ui.profile.modal {
+  width: 50%;
+}
+
+.ui.profile.form {
+  padding: 30px;
 }
 
 #welcome h2 {
@@ -118,21 +133,6 @@ span.title {
   font-size: 1.5rem;
 }
 
-/*.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 35px;
-  height: 0;
-  overflow: hidden;
-}
-.video-container iframe {
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}*/
-
 #video-here {
   display: inline;
 }
@@ -149,6 +149,10 @@ span.title {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#search-field .ui.red.button {
+  margin-left: 10px;
 }
 
 #main-content {
@@ -178,6 +182,10 @@ span.title {
   font-size: 1.2rem;
 }
 
+.ui.description.container {
+  padding-bottom: 30px;
+}
+
 #similar-games a {
   color: black;
 }
@@ -190,6 +198,10 @@ span.title {
   float: right;
   margin-left: 15px;
   margin-bottom: 15px;
+}
+
+#youtube-logo {
+  clear: both;
 }
 
 #image-gallery {

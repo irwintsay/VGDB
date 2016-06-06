@@ -1,5 +1,5 @@
 angular.module('contentController', [])
-  .controller('ContentController', ['$scope', '$http', '$cookies', '$routeParams', '$window', function($scope, $http, $cookies, $routeParams, $window) {
+  .controller('ContentController', ['$scope', '$http', '$cookies', '$routeParams', '$window', '$location', function($scope, $http, $cookies, $routeParams, $window, $location) {
 
     $scope.searchTerm = $routeParams.query || '';
     $scope.currentUser = {};
@@ -159,13 +159,19 @@ angular.module('contentController', [])
       $('#image-viewer.ui.modal').modal('show');
     };
 
+    $scope.checkLocation = function() {
+      var truth = $location.url().search('search');
+      if (truth != -1) {
+        $('#username').css("color","black");
+      } else {
+        $('#username').css("color","white");
+      }
+    }
+
     $scope.redirectToContent = function() {
       $window.location.href = "#/search/" + $scope.searchTerm;
-      // $scope.search();
     };
 
     $scope.getCurrentUser();
-    // $scope.getAllSearches();
-    // $scope.search();
-    // $scope.getAllYouTubeVideos();
+    $scope.checkLocation();
   }]);

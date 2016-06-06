@@ -5,13 +5,12 @@
 </div>
 
 <div id="search-field" class="ui center aligned container">
-  <form class="ui form" >
+  <form class="ui form" ng-submit="redirectToContent()">
     <div class="ui large icon input">
       <input type="text" placeholder="Search for a game" ng-model="searchTerm">
       <i class="search icon"></i>
     </div>
-    <!-- <input class="ui red button" type="submit" value="Search"> -->
-    <a class="ui red button" href="#/search/{{ searchTerm }}">Search</a>
+    <input class="ui red button" type="submit" value="Search">
   </form>
 </div>
 
@@ -52,9 +51,7 @@
     <div id="giantbomb-summary" class="ui italic header">
       <h3>"<i>{{ giantBombData.deck }}</i>"</h3>
     </div>
-    <div class="ui container">
-      <h2 class="ui header">Overview</h2>
-      <div class="ui divider"></div>
+    <div class="ui description container">
       <div id="twitch-container">
         <img id="twitch-logo" class="ui centered image"src="../../media/twitch-logo-smallest.png" alt="" />
         <iframe id="twitch-stream"
@@ -67,52 +64,21 @@
           autoplay="true">
         </iframe>
       </div>
+      <div class="ui horizontal divider"><h2 class="ui header">Overview</h2></div>
       <p id="giantbomb-description"></p>
     </div>
-    <img class="ui image" src="../../media/youtube-logo.png" alt="" />
-    <div id="video-here">
 
-    </div>
-
+    <img id="youtube-logo" class="ui image" src="../../media/youtube-logo.png" alt="" />
+    <div id="video-here"></div>
   </div>
-  <!-- <div class="five wide column">
-    <img id="twitch-logo" class="ui centered image"src="../../media/twitch-logo-smallest.png" alt="" />
-    <div class="video-container">
-      <iframe id="twitch-stream"
-        src=""
-        height="480"
-        width="640"
-        frameborder="0"
-        scrolling="no"
-        allowfullscreen="true"
-        autoplay="true">
-      </iframe>
-    </div>
-    <div class="ui embed" data-url="http://player.twitch.tv/?channel=RealKraftyy" data-placeholder="" data-icon="right circle arrow"></div>
-    <div id="giantbomb-review" class="" ng-show>
-      <h3 class="header">Giant Bomb Review</h3>
-    </div>
-  </div> -->
 </div>
+
 <div id="image-viewer" class="ui modal">
   <div class="ui image">
     <img ng-src="{{ currentImage }}" alt="" />
   </div>
 </div>
 <div class="ui grid">
-
-  <!-- <h1>Live Twitch Stream</h1>
-  <div>
-    <iframe id="twitch-stream"
-      src=""
-      height="480"
-      width="640"
-      frameborder="0"
-      scrolling="no"
-      allowfullscreen="true">
-    </iframe>
-  </div> -->
-
 
 
   <div id="image-gallery" class="ui small images">

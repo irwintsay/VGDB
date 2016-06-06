@@ -124,9 +124,14 @@ angular.module('contentController', [])
 
     $scope.getTwitchStream = function() {
       $http.get('https://api.twitch.tv/kraken/streams?limit=1&game=' + $scope.searchTerm).then(function(response) {
+        // console.log("TWITCH REPLY");
+        // console.log(response.data);
         $scope.twitchStream = response.data.streams[0].channel.display_name;
+        console.log(response.data.streams[0].preview.medium);
         // console.log($scope.twitchStream);
         $scope.resetTwitchStream($scope.twitchStream);
+        $('.ui.embed').embed();
+
       });
     };
 

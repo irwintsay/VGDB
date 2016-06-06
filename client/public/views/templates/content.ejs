@@ -16,9 +16,9 @@
 </div>
 
 <div id="main-content" class="ui grid">
-  <div class="six wide column">
+  <div class="five wide column">
     <div id="giantbomb" class="ui image" ng-show="showImage">
-      <img class="contain" ng-src="{{ gameImage }}" alt="" />
+      <img ng-src="{{ gameImage }}" alt="" />
     </div>
   </div>
   <div class="six wide column">
@@ -29,28 +29,44 @@
       <h4>{{ giantBombData.deck }}</h4>
     </div>
     <div class="">
+      <h4>Release Date:</h4>
       <p>
-        Release Date: {{ giantBombData.original_release_date }}
+        {{ giantBombData.original_release_date }}
       </p>
       <h4>Platforms: </h4>
       <div class="ui list">
         <div class="item" ng-repeat="platform in giantBombData.platforms">{{ platform.name }}</div>
       </div>
-
+    </div>
+  </div>
+  <div class="five wide column">
+    <img id="twitch-logo" class="ui centered image"src="../../media/twitch-logo-smallest.png" alt="" />
+    <!-- <div class="video-container">
+      <iframe id="twitch-stream"
+        src=""
+        height="480"
+        width="640"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen="true"
+        autoplay="true">
+      </iframe>
+    </div> -->
+    <div class="ui embed" data-url="http://player.twitch.tv/?channel=RealKraftyy" data-placeholder="" data-icon="right circle arrow">
     </div>
   </div>
 </div>
 <div class="ui grid">
   <h1>Live Twitch Stream</h1>
   <div>
-    <iframe id="twitch-stream"
+    <!-- <iframe id="twitch-stream"
       src=""
       height="480"
       width="640"
       frameborder="0"
       scrolling="no"
       allowfullscreen="true">
-    </iframe>
+    </iframe> -->
   </div>
 
   <h1>YouTube Content</h1>

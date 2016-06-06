@@ -119,6 +119,21 @@ span.title {
   font-size: 1.5rem;
 }
 
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 35px;
+  height: 0;
+  overflow: hidden;
+}
+.video-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 #video-here {
   display: inline;
 }
@@ -133,9 +148,13 @@ span.title {
   justify-content: center;
 }
 
-#main-content{
+#main-content {
   position: relative;
-  margin-top: 50px;
+  margin-top: 20px;
+}
+
+#main-content h1 {
+  font-size: 3rem;
 }
 
 #giantbomb {
@@ -145,6 +164,10 @@ span.title {
 #giantbomb-title {
   width: 200px;
   margin: 0 auto;
+}
+
+#twitch-logo {
+  margin-bottom: 30px;
 }
 
 #welcome-filter {

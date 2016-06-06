@@ -52,6 +52,8 @@ usersRouter.get('/:username', function(req, res) {
 
 // User Edit
 usersRouter.put('/edit', function(req, res){
+  console.log("test");
+  console.log(req.user);
   var editedUser = {
     username: req.body.username,
     email: req.body.email,
@@ -59,8 +61,8 @@ usersRouter.put('/edit', function(req, res){
     lastName: req.body.lastName,
     avatarUrl: req.body.avatarUrl
   };
-  var cookiesUser = JSON.parse(req.cookies.current_user);
-  var query = { username: cookiesUser.username };
+  // var cookiesUser = JSON.parse(req.cookies.current_user);
+  var query = { username: req.user.username };
 
   User.update(query, editedUser, function(error, dbUser) {
     if (error) {
@@ -71,7 +73,7 @@ usersRouter.put('/edit', function(req, res){
       var token = jwt.sign(tokenObject, process.env.JWT_SECRET, {
         expiresIn: "24h"
       });
-      res.json({ token: token, currentUser: { username: editedUser.username } });
+      res.json({ token: token });
     }
   });
 });

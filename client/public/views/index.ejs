@@ -34,10 +34,10 @@
             <a ng-click="showSignupForm()"><h4>Create Account</h4></a>
           </div>
           <div class="item">
-            <h4>Edit Profile</h4>
+            <a ng-click="showProfileEditForm()"><h4>Edit Profile</h4></a>
           </div>
           <div class="item">
-            <a href="#/" ng-click="signOut()"><h4>Sign out</h4></a>
+            <a ng-click="signOut()"><h4>Sign out</h4></a>
           </div>
         </div>
       </div>
@@ -92,6 +92,43 @@
         </div>
         <div class="field">
           <input class="ui red button" type="submit" value="Sign Up">
+        </div>
+      </form>
+    </div>
+
+    <div id="edit-profile" class="ui profile modal">
+      <form id="edit-user" class="ui profile form" ng-submit="submitProfileEditForm()">
+        <div class="two fields">
+          <div class="field">
+            <label>Username</label>
+            <input type="text" ng-model="editedUser.username">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="text" ng-model="editedUser.email">
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" ng-model="editedUser.password">
+        </div>
+        <div class="field">
+          <label>Name</label>
+          <div class="two fields">
+            <div class="field">
+              <input type="text" ng-model="editedUser.firstName">
+            </div>
+            <div class="field">
+              <input type="text" ng-model="editedUser.lastName">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Avatar</label>
+          <input class='' type="text" ng-model="editedUser.avatarUrl">
+        </div>
+        <div class="field">
+          <input class="ui red button" type="submit" value="Edit Profile">
         </div>
       </form>
     </div>

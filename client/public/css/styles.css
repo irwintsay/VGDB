@@ -142,7 +142,7 @@ span.title {
   position: relative;
   margin-top: 40px;
   background-color: black;
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,6 +161,10 @@ span.title {
   text-align: center;
 }
 
+#giantbomb img {
+  /*margin-top: 30px;*/
+}
+
 #giantbomb-title {
   width: 200px;
   margin: 0 auto;
@@ -168,6 +172,10 @@ span.title {
 
 #twitch-logo {
   margin-bottom: 30px;
+}
+
+#image-gallery {
+  margin-top: 20px;
 }
 
 #welcome-filter {

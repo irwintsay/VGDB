@@ -65,10 +65,10 @@ angular.module('contentController', [])
     };
 
     $scope.getAllSearches = function() {
-      $http.get('/api/searches').then(function(response) {
+      $http.get('/api/searches').then(function(searchResponse) {
         console.log("THIS IS ALL THE SEARCHES RESPONSE");
-        console.log(response.data);
-        $scope.allSearches = response.data;
+        console.log(searchResponse.data);
+        $scope.allSearches = searchResponse.data;
         console.log("THIS IS ALL THE SEARCHES");
         console.log($scope.allSearches);
         $scope.search();

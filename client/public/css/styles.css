@@ -101,13 +101,12 @@ span.title {
 
 #title-bar {
   padding-top: 30px;
-  padding-left: 50px;
   height: 75px;
 }
 
 #title-bar a {
   font-family: 'Lato';
-  font-size: 3rem;
+  font-size: 3.5rem;
   padding: 0 10px;
   color: white;
   background-color: black;
@@ -119,7 +118,7 @@ span.title {
   font-size: 1.5rem;
 }
 
-.video-container {
+/*.video-container {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 35px;
@@ -132,17 +131,21 @@ span.title {
     left: 0;
     width: 100%;
     height: 100%;
-}
+}*/
 
 #video-here {
   display: inline;
+}
+
+#video-here iframe {
+  margin: 5px 5px;
 }
 
 #search-field {
   position: relative;
   margin-top: 40px;
   background-color: black;
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,15 +162,42 @@ span.title {
 
 #giantbomb {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 #giantbomb-title {
-  width: 200px;
-  margin: 0 auto;
+  font-family: 'Lato';
+}
+
+#giantbomb-summary {
+  padding: 0 30px;
+  margin-bottom: 30px;
+}
+
+#giantbomb-description {
+  font-size: 1.2rem;
+}
+
+#similar-games a {
+  color: black;
 }
 
 #twitch-logo {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+}
+
+#twitch-container {
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+#image-gallery {
+  margin-top: 20px;
+}
+
+#image-viewer {
+  width: 640px;
 }
 
 #welcome-filter {

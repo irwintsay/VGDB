@@ -16,32 +16,68 @@
 </div>
 
 <div id="main-content" class="ui grid">
-  <div class="five wide column">
+  <div class="four wide column">
     <div id="giantbomb" class="ui image" ng-show="showImage">
       <img ng-src="{{ gameImage }}" alt="" />
     </div>
-  </div>
-  <div class="six wide column">
-    <div>
-      <h1 class="ui center aligned header">{{ giantBombData.name }}</h1>
-    </div>
-    <div class="ui header">
-      <h4>{{ giantBombData.deck }}</h4>
-    </div>
     <div class="">
       <h4>Release Date:</h4>
-      <p>
-        {{ giantBombData.original_release_date }}
-      </p>
+      <p>{{ giantBombData.original_release_date }}</p>
+
+      <h4>Developer: </h4>
+      <div class="ui list">
+        <div class="item" ng-repeat="developer in giantBombData.developers">{{ developer.name }}</div>
+      </div>
+      <h4>Genre: </h4>
+      <div class="ui list">
+        <div class="item" ng-repeat="genre in giantBombData.genres">{{ genre.name }}</div>
+      </div>
       <h4>Platforms: </h4>
       <div class="ui list">
         <div class="item" ng-repeat="platform in giantBombData.platforms">{{ platform.name }}</div>
       </div>
+      <h4>You might also like: </h4>
+      <div id="similar-games" class="ui list">
+        <div class="item" ng-repeat="similarGame in giantBombData.similar_games">
+          <a href="{{ similarGame.site_detail_url }}">{{ similarGame.name }}</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="five wide column">
+
+  <div class="twelve wide column">
+    <div class="ui horizontal divider">
+      <h1 id="giantbomb-title" class="ui center aligned header">{{ giantBombData.name }}</h1>
+    </div>
+    <div id="giantbomb-summary" class="ui italic header">
+      <h3>"<i>{{ giantBombData.deck }}</i>"</h3>
+    </div>
+    <div class="ui container">
+      <h2 class="ui header">Overview</h2>
+      <div class="ui divider"></div>
+      <div id="twitch-container">
+        <img id="twitch-logo" class="ui centered image"src="../../media/twitch-logo-smallest.png" alt="" />
+        <iframe id="twitch-stream"
+          src=""
+          height="320"
+          width="426"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen="true"
+          autoplay="true">
+        </iframe>
+      </div>
+      <p id="giantbomb-description"></p>
+    </div>
+    <img class="ui image" src="../../media/youtube-logo.png" alt="" />
+    <div id="video-here">
+
+    </div>
+
+  </div>
+  <!-- <div class="five wide column">
     <img id="twitch-logo" class="ui centered image"src="../../media/twitch-logo-smallest.png" alt="" />
-    <!-- <div class="video-container">
+    <div class="video-container">
       <iframe id="twitch-stream"
         src=""
         height="480"
@@ -51,26 +87,39 @@
         allowfullscreen="true"
         autoplay="true">
       </iframe>
-    </div> -->
-    <div class="ui embed" data-url="http://player.twitch.tv/?channel=RealKraftyy" data-placeholder="" data-icon="right circle arrow">
     </div>
+    <div class="ui embed" data-url="http://player.twitch.tv/?channel=RealKraftyy" data-placeholder="" data-icon="right circle arrow"></div>
+    <div id="giantbomb-review" class="" ng-show>
+      <h3 class="header">Giant Bomb Review</h3>
+    </div>
+  </div> -->
+</div>
+<div id="image-viewer" class="ui modal">
+  <div class="ui image">
+    <img ng-src="{{ currentImage }}" alt="" />
   </div>
 </div>
 <div class="ui grid">
-  <h1>Live Twitch Stream</h1>
+
+  <!-- <h1>Live Twitch Stream</h1>
   <div>
-    <!-- <iframe id="twitch-stream"
+    <iframe id="twitch-stream"
       src=""
       height="480"
       width="640"
       frameborder="0"
       scrolling="no"
       allowfullscreen="true">
-    </iframe> -->
-  </div>
+    </iframe>
+  </div> -->
 
-  <h1>YouTube Content</h1>
-  <div id="video-here">
 
+
+  <div id="image-gallery" class="ui small images">
+    <h2 class="centered header">{{ giantBombData.name }} Screenshots</h2>
+    <div class="ui divider">
+
+    </div>
+    <img ng-repeat="image in giantBombData.images" ng-src="http://static.giantbomb.com{{image.medium_url}}" ng-click="setImageAndShowModal(image.super_url)" alt="" />
   </div>
 </div>

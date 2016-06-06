@@ -201,7 +201,7 @@
     margin: 0em 0em 0em -425px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1300px) {
   .ui.modal {
     width: 900px;
     margin: 0em 0em 0em -450px;
@@ -437,7 +437,7 @@
     margin: 0em 0em 0em -340px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1300px) {
   .ui.small.modal {
     width: 720px;
     margin: 0em 0em 0em -360px;
@@ -472,7 +472,7 @@
     margin: 0em 0em 0em -510px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1300px) {
   .ui.large.modal {
     width: 1080px;
     margin: 0em 0em 0em -540px;

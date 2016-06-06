@@ -10,8 +10,6 @@ var Search          = require('../../models/search');
 // Search: Get All
 searchesRouter.get('/', function(req, res) {
   Search.find(function(error, response) {
-    console.log("YOYO");
-    console.log(response);
     res.json(response);
   });
 });

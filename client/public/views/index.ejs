@@ -43,50 +43,55 @@
       </div>
     </div>
 
-    <div id="login" class="ui modal">
-      <form id="login-user" class="ui form" ng-submit="submitLoginForm()">
-        <div class="fields">
-          <div class="field">
-            <div class="ui large inverted input">
-              <input type="text" ng-model="loginUser.username" placeholder="Username">
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui large inverted input">
-              <input type="password" ng-model="loginUser.password" placeholder="Password">
-            </div>
-          </div>
-          <div class="action">
-            <div class="ui large inverted input">
-              <input type="submit" name="login-form" value="Log In">
-            </div>
-          </div>
+    <div id="login" class="ui profile modal">
+      <form id="login-user" class="ui profile form" ng-submit="submitLoginForm()">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" ng-model="loginUser.username">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" ng-model="loginUser.password">
+        </div>
+        <div class="field">
+          <input class="ui red button" type="submit" name="login-form" value="Sign in">
         </div>
       </form>
     </div>
 
-    <div id="signup" class="ui modal">
-      <form id="new-user" ng-submit="submitSignupForm()">
-        <div class="ui large inverted input">
-          <input class='' type="text" ng-model="newUser.username" placeholder="Username">
+    <div id="signup" class="ui profile modal">
+      <form id="new-user" class="ui profile form" ng-submit="submitSignupForm()">
+        <div class="two fields">
+          <div class="field">
+            <label>Username</label>
+            <input class='' type="text" ng-model="newUser.username" placeholder="i.e. Yung Squirgey">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input class='' type="text" ng-model="newUser.email" placeholder="yungsquirgey@aol.com">
+          </div>
         </div>
-        <div class="ui large inverted input">
-          <input class='' type="text" ng-model="newUser.email" placeholder="Email">
-        </div>
-        <div class="ui large inverted input">
+        <div class="field">
+          <label>Password</label>
           <input class='' type="password" ng-model="newUser.password" placeholder="Password">
         </div>
-        <div class="ui large inverted input">
-          <input class='' type="text" ng-model="newUser.firstName" placeholder="First Name">
+        <div class="field">
+          <label>Name</label>
+          <div class="two fields">
+            <div class="field">
+              <input class='' type="text" ng-model="newUser.firstName" placeholder="i.e. Sergey">
+            </div>
+            <div class="field">
+              <input class='' type="text" ng-model="newUser.lastName" placeholder="Kablinski">
+            </div>
+          </div>
         </div>
-        <div class="ui large inverted input">
-          <input class='' type="text" ng-model="newUser.lastName" placeholder="Last Name">
+        <div class="field">
+          <label>Avatar</label>
+          <input class='' type="text" ng-model="newUser.avatarUrl" placeholder="Image URL i.e. http://i.imgur.com/EfGLKcD.jpg?1">
         </div>
-        <div class="ui large inverted input">
-          <input class='' type="text" ng-model="newUser.avatarUrl" placeholder="Avatar URL">
-        </div>
-        <div class="ui large inverted input">
-          <input type="submit" value="Sign Up">
+        <div class="field">
+          <input class="ui red button" type="submit" value="Sign Up">
         </div>
       </form>
     </div>

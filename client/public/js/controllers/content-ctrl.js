@@ -14,6 +14,8 @@ angular.module('contentController', [])
 
     $scope.currentImage = '';
 
+    $scope.popularSearches = [];
+
     $scope.search = function() {
       $scope.getTwitchStream();
       $scope.getAllYouTubeVideos();
@@ -68,13 +70,19 @@ angular.module('contentController', [])
 
     $scope.getAllSearches = function() {
       $http.get('/api/searches').then(function(searchResponse) {
-        console.log("THIS IS ALL THE SEARCHES RESPONSE");
+        console.log("THIS IS GET ALL SEARCHES RESPONSE");
         console.log(searchResponse.data);
         $scope.allSearches = searchResponse.data;
-        console.log("THIS IS ALL THE SEARCHES");
-        console.log($scope.allSearches);
+        $scope.determinePopularSearches();
         $scope.search();
       });
+    };
+
+    $scope.determinePopularSearches = function() {
+      $scope.allSearches.sort(function(a,b) {return (a.count > b.count) ? 1 : ((b.count > a.count) ? -1 : 0);} );
+      for (var i = 0; i < 8; i++) {
+        $scope.popularSearches[i] = $scope.allSearches[($scope.allSearches.length - 1 - i)];
+      }
     };
 
     $scope.queryExists = function() {

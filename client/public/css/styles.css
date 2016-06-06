@@ -155,9 +155,34 @@ span.title {
   margin-left: 10px;
 }
 
+#popular-searches {
+  margin-top: 10px;
+}
+
+#popular-searches h3 {
+  margin: 0;
+  display: inline;
+}
+
+#popular-searches ul {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+}
+
+#popular-searches li {
+  display: inline;
+}
+
+#popular-searches a {
+  font-size: 1.2rem;
+  color: black;
+  margin: 0 10px;
+}
+
 #main-content {
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #main-content h1 {
@@ -186,8 +211,14 @@ span.title {
   padding-bottom: 30px;
 }
 
+#similar-games {
+  background-color: black;
+  border-radius: 1rem;
+  padding: 15px 15px;
+}
+
 #similar-games a {
-  color: black;
+  color: white;
 }
 
 #twitch-logo {

@@ -52,8 +52,6 @@ usersRouter.get('/:username', function(req, res) {
 
 // User Edit
 usersRouter.put('/edit', function(req, res){
-  console.log("test");
-  console.log(req.user);
   var editedUser = {
     username: req.body.username,
     email: req.body.email,
@@ -61,7 +59,6 @@ usersRouter.put('/edit', function(req, res){
     lastName: req.body.lastName,
     avatarUrl: req.body.avatarUrl
   };
-  // var cookiesUser = JSON.parse(req.cookies.current_user);
   var query = { username: req.user.username };
 
   User.update(query, editedUser, function(error, dbUser) {
@@ -80,8 +77,6 @@ usersRouter.put('/edit', function(req, res){
 
 // User Delete
 usersRouter.delete('/:username', function(req, res) {
-  // var cookiesUser = JSON.parse(req.cookies.current_user);
-  // var query = { username: cookiesUser.username };
   var query = { username: req.params.username };
 
   User.remove(query, function(error, status) {

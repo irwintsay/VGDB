@@ -11,9 +11,7 @@ angular.module('contentController', [])
     $scope.giantBombData = null;
     $scope.gameImage = '';
     $scope.showImage = false;
-
     $scope.currentImage = '';
-
     $scope.popularSearches = [];
 
     $scope.search = function() {
@@ -65,7 +63,10 @@ angular.module('contentController', [])
           console.log($scope.currentUser);
           $scope.getAllSearches();
         });
+      } else {
+        $scope.getAllSearches();
       }
+
     };
 
     $scope.getAllSearches = function() {
@@ -125,8 +126,15 @@ angular.module('contentController', [])
           $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.image.super_url;
           $scope.showImage = true;
           insertDescription($scope.giantBombData.description);
+          $scope.giantBombData.original_release_date = $scope.trimReleaseDate();
         });
       });
+    };
+
+    $scope.trimReleaseDate = function() {
+      var n = $scope.giantBombData.original_release_date.search("00:00:00");
+      var trimmedDate = $scope.giantBombData.original_release_date.substring(0, n);
+      return trimmedDate;
     };
 
     $scope.resetTwitchStream = function() {
@@ -174,7 +182,7 @@ angular.module('contentController', [])
       } else {
         $('#username').css("color","white");
       }
-    }
+    };
 
     $scope.redirectToContent = function() {
       $window.location.href = "#/search/" + $scope.searchTerm;

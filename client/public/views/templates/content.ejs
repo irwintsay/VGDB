@@ -5,13 +5,12 @@
 </div>
 
 <div id="search-field" class="ui center aligned container">
-  <form class="ui form" >
+  <form class="ui form" ng-submit="redirectToContent()">
     <div class="ui large icon input">
       <input type="text" placeholder="Search for a game" ng-model="searchTerm">
       <i class="search icon"></i>
     </div>
-    <!-- <input class="ui red button" type="submit" value="Search"> -->
-    <a class="ui red button" href="#/search/{{ searchTerm }}">Search</a>
+    <input class="ui red button" type="submit" value="Search">
   </form>
 </div>
 
@@ -68,7 +67,7 @@
       <div class="ui horizontal divider"><h2 class="ui header">Overview</h2></div>
       <p id="giantbomb-description"></p>
     </div>
-    
+
     <img id="youtube-logo" class="ui image" src="../../media/youtube-logo.png" alt="" />
     <div id="video-here"></div>
   </div>

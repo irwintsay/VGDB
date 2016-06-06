@@ -151,7 +151,7 @@ span.title {
   justify-content: center;
 }
 
-#search-field a {
+#search-field .ui.red.button {
   margin-left: 10px;
 }
 

@@ -12,6 +12,8 @@ angular.module('contentController', [])
     $scope.gameImage = '';
     $scope.showImage = false;
 
+    $scope.currentImage = '';
+
     $scope.search = function() {
       $scope.getTwitchStream();
       $scope.getAllYouTubeVideos();
@@ -129,7 +131,8 @@ angular.module('contentController', [])
         // console.log(response.data);
         $scope.twitchStream = response.data.streams[0].channel.display_name;
         console.log(response.data.streams[0].preview.medium);
-        // console.log($scope.twitchStream);
+        console.log("TWITCH STREAM");
+        console.log($scope.twitchStream);
         $scope.resetTwitchStream($scope.twitchStream);
         $('.ui.embed').embed();
 
@@ -137,12 +140,9 @@ angular.module('contentController', [])
     };
 
     $scope.getAllYouTubeVideos = function() {
-      var query = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&key=AIzaSyDnQMUe3C-RMhVregUqtfAluhY6kQQpE7g&q=" + $scope.searchTerm + "+gameplay";
+      var query = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&maxResults=4&key=AIzaSyDnQMUe3C-RMhVregUqtfAluhY6kQQpE7g&q=" + $scope.searchTerm + "+gameplay";
       $http.get(query).then(function(response) {
-      // $http.get('https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=destiny+gameplay&order=viewCount&key=AIzaSyDnQMUe3C-RMhVregUqtfAluhY6kQQpE7g').then(function(response) {
-
         $scope.allYouTubeVideos = response.data.items;
-
         // buildVideo(id);
         $scope.renderAllYouTubeVideos();
       });
@@ -152,6 +152,11 @@ angular.module('contentController', [])
       for (var i = 0; i < $scope.allYouTubeVideos.length; i++) {
         buildVideo($scope.allYouTubeVideos[i].id.videoId);
       }
+    };
+
+    $scope.setImageAndShowModal = function(imageUrl) {
+      $scope.currentImage = "http://static.giantbomb.com" + imageUrl;
+      $('#image-viewer.ui.modal').modal('show');
     };
 
     $scope.redirectToContent = function() {

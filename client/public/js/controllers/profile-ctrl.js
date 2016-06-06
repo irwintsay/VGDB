@@ -4,6 +4,7 @@ angular.module('profileController', ['ngCookies'])
   function($scope, $http, $cookies, $timeout, $location, $route) {
 
     $scope.currentUser = {};
+    $scope.editedUser = {};
 
     $scope.blankUserAvatar = 'https://www.groupmuse.com/assets/empty_user.jpg';
     $scope.currentAvatar = 'https://www.groupmuse.com/assets/empty_user.jpg';
@@ -59,6 +60,7 @@ angular.module('profileController', ['ngCookies'])
           }
           // Display Welcome Greeting for 5s
           if ($scope.currentUser.firstName) {
+            $scope.setEditedUser();
             $scope.showWelcomeGreeting = true;
             $timeout(function() {
               $scope.showWelcomeGreeting = false;
@@ -91,6 +93,26 @@ angular.module('profileController', ['ngCookies'])
         $cookies.put('user_token', response.data.token);
         $scope.clearUserModels();
         $scope.checkCookie();
+      });
+    };
+
+    $scope.setEditedUser = function() {
+      $scope.editedUser = $scope.currentUser;
+    };
+
+    $scope.showProfileEditForm = function() {
+      $('#edit-profile.ui.modal').modal('show');
+    };
+
+    $scope.submitProfileEditForm = function() {
+      $http.put('/api/users/edit', $scope.editedUser).then(function(response) {
+        $('#edit-profile.ui.modal').modal('hide');
+        $cookies.remove("user_token");
+        $cookies.put("user_token", response.data.token)
+        $scope.clearUserModels();
+        console.log(response.data);
+        $scope.getCurrentUser();
+        $route.reload();
       });
     };
 

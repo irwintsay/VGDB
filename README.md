@@ -5,20 +5,16 @@ http://vgdb.herokuapp.com
 
 Welcome to VGDB, a full stack web application for discovering video game information and content. VGDB is built with Node.js/Express.js, MongoDB, AngularJS, and Semantic-UI.
 
-The goal of VGDB was to create a web application for discovering video game content.
+The goal of VGDB was to create a web application for serving general information and dynamic YouTube and Twitch content for video game searches.
 
 
 ### Using VGDB
 
-All of the views occur in a linear fashion. The server either creates a new account or signs into an existing account with username and password credentials.
+Using VGDB is really straightforward. You have the option to sign up for an account, but it is not required. You start by simply clicking on the search bar and typing in the name of a video game. VGDB will then submit the search query, make a few API calls to 3rd party services GiantBomb API, Twitch.tv and YouTube to gather content.
 
-The server is then taken to a 'Profile' view where they can see all available Tables and the Tables they are currently serving. The Tables are identified by a unique number, and all customers seated at that table are displayed within each table. From here, the server can either pick an empty table and then add new customers (for now the application just generates fake customers with faker) or click on an occupied table to check in on the current status of that table. There is also an 'add table' button that generates new tables, but that is actually a relic of a previous version of the app. For now I wanted to focus on having a set number of tables.
+At this point VGDB will assemble the content and redirect you to the proper view. From here you'll see the Name of the game you searched for, an overview of the game, some additional game details on the left sidebar, a live Twitch stream of that game with the highest viewer count (if there is a stream available), and some related YouTube gameplay content. You'll also notice 'Popular Searches' underneath the search bar. These popular searches dynamically change as VGDB users continue making searches.
 
-Clicking on a table, empty or occupied, will bring you to a table view that allows you to either add customers or click on an existing customer to see their orders. Adding customers to an empty table will then give 'ownership' of that previously empty table to the logged in server. That means if you were to logout and log back in with a different server, that table would no longer be available.
-
-Clicking on an existing customer will take you to the customers view where you can add or remove menu items to their order. Clicking back to the table view, you now have the option to view the current receipt and then click 'Pay Bill' which will then clear the table and return it to the pool of available tables for all servers.
-
-At the top of the screen there is an Admin view which allows users to add or remove items to the menu.
+In the future I plan to do more with the Search database I created and hope to include Related Searches and also a statistics page where I might graph some interesting data about Searches that VGDB logs.
 
 
 ### Prototyping
@@ -27,6 +23,15 @@ Once the project was assigned, I spent the majority of the first day brainstormi
 
 Once I had wrapped my mind around the ERD for my application, I started hand-drawing wireframes for what my application would eventually look like.
 
+### User Stories
+
+- As a user I want to be able to search for any video game and learn basic information about them.
+
+- As a user I want to be able to watch gameplay videos related to my search.
+
+- As a user I want to be able to watch a live stream of the game I searched for.
+
+- As a user I want to see what games other people are searching for.
 
 ### Wireframes
 

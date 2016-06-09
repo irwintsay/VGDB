@@ -85,14 +85,11 @@
     <img ng-src="{{ currentImage }}" alt="" />
   </div>
 </div>
+
 <div class="ui grid">
-
-
   <div id="image-gallery" class="ui small images">
     <h2 class="centered header">{{ giantBombData.name }} Screenshots</h2>
-    <div class="ui divider">
-
-    </div>
+    <div class="ui divider"></div>
     <img ng-repeat="image in giantBombData.images" ng-src="http://static.giantbomb.com{{image.medium_url}}" ng-click="setImageAndShowModal(image.super_url)" alt="" />
   </div>
 </div>

@@ -1,7 +1,10 @@
 # VGDB
-Video Game Database
+### Video Game Database
+VGDB v1.0 <br>
+README v1.0
 
-http://vgdb.herokuapp.com
+Heroku: http://vgdb.herokuapp.com <br>
+GitHub: https://github.com/irwintsay/VGDB
 
 Welcome to VGDB, a full stack web application for discovering video game information and content. VGDB is built with Node.js/Express.js, MongoDB, AngularJS, and Semantic-UI.
 
@@ -14,14 +17,16 @@ Using VGDB is really straightforward. You have the option to sign up for an acco
 
 At this point VGDB will assemble the content and redirect you to the proper view. From here you'll see the Name of the game you searched for, an overview of the game, some additional game details on the left sidebar, a live Twitch stream of that game with the highest viewer count (if there is a stream available), and some related YouTube gameplay content. You'll also notice 'Popular Searches' underneath the search bar. These popular searches dynamically change as VGDB users continue making searches.
 
-In the future I plan to do more with the Search database I created and hope to include Related Searches and also a statistics page where I might graph some interesting data about Searches that VGDB logs.
+In the future I plan to do more with the Search database I created and hope to include Related Searches and also a statistics page where I could graph some interesting data about Searches that VGDB logs.
 
 
 ### Prototyping
 
-Once the project was assigned, I spent the majority of the first day brainstorming and white boarding the ERD for what would eventually become the structure for my PostgreSQL database. This process actually required me to think about how my application would look and function, because it would have implications on how I would store and display data.
+After settling on my project idea, I started searching for APIs that I could use to supply the content I was looking for. YouTube and Twitch were easy calls to make. Both YouTube and Twitch provided professional, robust APIs that made finding video game media very easy and straightforward. For detailed information about individual games, I came across a few options of varying quality, but I knew from the outset that I would likely use GiantBomb's API. GiantBomb is a funny video game website that produces game reviews and original video content, but they also happen to have the most comprehensive database for video games as well. Using GiantBomb's API was also very straightforward.
 
-Once I had wrapped my mind around the ERD for my application, I started hand-drawing wireframes for what my application would eventually look like.
+The next step involved brainstorming my own database and what I would information I wanted to store. I decided to create User accounts and authorization as well as a separate MongoDB collection for saving Search queries. The idea was that I wanted to save every unique Search query entered in my site. I wanted to save the number of times each term had been searched as well as an array of User IDs that had made those searches. This was the big feature that I didn't get working in time for my final project. In the future I plan to implement Search relations, related Searches, and Search statistics.
+
+The view I had in mind was pretty basic so I didn't spend much time thinking about the wireframes for my project.
 
 
 ### User Stories
@@ -36,31 +41,24 @@ Once I had wrapped my mind around the ERD for my application, I started hand-dra
 
 ### Wireframes
 
-#### Welcome/Login View
-![Login](http://i.imgur.com/auZztyyl.jpg "Login")
-
-#### User/Add Table View
-![Profile Page](http://i.imgur.com/Dt6Gqtrl.jpg?1 "Profile")
-
-
-
-### ERD
-
-![ERD](http://i.imgur.com/8NtyBsCl.png "ERD")
+##### Welcome/Login View
+Coming soon!
 
 
 ### Implementation
 
 This project was implemented with HTML, CSS, JavaScript and Materialize for the front-end, Ruby on Rails for the back-end, and PostgreSQL for the database.
 
-Stack:
+##### Stack:
+
 * Node.js
 * Express.js
 * MongoDB
 * AngularJS
 * Semantic-UI
 
-Node Dependencies:
+##### Node Dependencies:
+
 * express
 * bcryptjs
 * body-parser
@@ -77,10 +75,24 @@ Node Dependencies:
 * path
 * semantic-ui
 
+##### MongoDB Collections
 
-MongoDB Collections
-* Users
-* Searches
+###### Users
+* username (String)
+* email (String)
+* password (String)
+* firstName (String)
+* lastName (String)
+* avatarUrl (String)
+* timestamps (Date)
+
+###### Searches
+* queryString (String)
+* count (Number)
+* firstSearched (Date)
+* lastSearched (Date)
+* users [{ user: String, summary: String }]
+* timestamps (Date)
 
 
 ### Installation
@@ -89,12 +101,14 @@ Heroku:   http://vgdb.herokuapp.com
 GitHub:   https://github.com/irwintsay/VGDB
 
 1.  Fork the VGDB repo
-2.  npm install
-3.  Create a .env file and set a JWT_SECRET variable with a random string
-4.  Obtain API keys for GiantBomb API and YouTube API and store in .env
-5.  Start mongod
-6.  nodemon
-7.  localhost:6969
+2.  Clone repo into a directory
+3.  Find the directory in Terminal
+4.  ``` npm install ```
+5.  Create a .env file and set a JWT_SECRET variable with a random string
+6.  Obtain API keys for GiantBomb API and YouTube API and store in .env
+7.  Start mongod
+8.  ```nodemon```
+9.  Open a browser and direct it to localhost:6969
 
 
 ### Still needs work
@@ -111,7 +125,15 @@ GitHub:   https://github.com/irwintsay/VGDB
 
 6. Edit profile page
 
+7. Credit GiantBomb, YouTube, and Twitch for their APIs.
+
+8. Some Overview information has no spaces after periods.
+
 
 ### Summary
 
-While my application is fairly barebones and simple looking, I'm really happy with how much I learned while building a full-stack Rails application and how much I grew as a developer. This application definitely required the most complicated database I had dealt with up to this point. Learning how to pull in the data I needed for each route was a struggle, but ultimately very rewarding. I know that I didn't exactly follow best practices for how I handled data, but I was proud to get everything more or less working the way I wanted it to.
+If you're not very interested in video games, then my project will probably seem kind of useless. That's ok! I'm actually fairly proud of what I was able to produce in one week. I think this is definitely one of the better looking websites that I've ever created. I expanded on what I've made in the past and learned even more about back-end development.
+
+Many of the big, time-killing hurdles that I encountered during this project involved User authorization, the Search database, and the Angular routing. Most of these roadblocks involve aspects of the project that a User will never see or notice and so in that respect it is kind of sad to think about how much time I lost to solving them. On the other hand I am happy with the way the UI came out and I think I'm providing some useful, pertinent information related to every search.
+
+In the future I plan to get my Search database completely functional and do some fun things with the data I'm saving.

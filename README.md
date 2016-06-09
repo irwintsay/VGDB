@@ -23,6 +23,7 @@ Once the project was assigned, I spent the majority of the first day brainstormi
 
 Once I had wrapped my mind around the ERD for my application, I started hand-drawing wireframes for what my application would eventually look like.
 
+
 ### User Stories
 
 - As a user I want to be able to search for any video game and learn basic information about them.
@@ -41,11 +42,6 @@ Once I had wrapped my mind around the ERD for my application, I started hand-dra
 #### User/Add Table View
 ![Profile Page](http://i.imgur.com/Dt6Gqtrl.jpg?1 "Profile")
 
-#### Add Customer View
-![Customer Page](http://i.imgur.com/h3fWJWcl.jpg?1 "Customers")
-
-#### Add Menu Items View
-![Menu Page](http://i.imgur.com/qmqi84pl.jpg?1 "Menu")
 
 
 ### ERD
@@ -57,18 +53,34 @@ Once I had wrapped my mind around the ERD for my application, I started hand-dra
 
 This project was implemented with HTML, CSS, JavaScript and Materialize for the front-end, Ruby on Rails for the back-end, and PostgreSQL for the database.
 
-I created tables for:
+Stack:
+* Node.js
+* Express.js
+* MongoDB
+* AngularJS
+* Semantic-UI
+
+Node Dependencies:
+* express
+* bcryptjs
+* body-parser
+* cookie-parser
+* crypto
+* dotenv
+* ejs
+* jsonwebtoken
+* mongoose
+* morgan
+* passport
+* passport-jwt
+* passport-local
+* path
+* semantic-ui
+
+
+MongoDB Collections
 * Users
-* Tables
-* Customers
-* Items
-* Orders
-
-
-* Users (Servers) have a 1:Many relationship with Tables
-* Tables have a 1:Many relationship with Customers
-* Customers have a Many to Many relationship with Items through Orders.
-
+* Searches
 
 
 ### Installation

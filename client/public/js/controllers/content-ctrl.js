@@ -1,5 +1,6 @@
 angular.module('contentController', [])
-  .controller('ContentController', ['$scope', '$http', '$cookies', '$routeParams', '$window', '$location', function($scope, $http, $cookies, $routeParams, $window, $location) {
+  .controller('ContentController',
+  ['$scope', '$http', '$cookies', '$routeParams', '$window', '$location', function($scope, $http, $cookies, $routeParams, $window, $location) {
 
     $scope.searchTerm = $routeParams.query || '';
     $scope.currentUser = {};
@@ -89,7 +90,6 @@ angular.module('contentController', [])
     $scope.queryExists = function() {
       var exists = false;
       $scope.allSearches.forEach(function(s) {
-        console.log($scope.matchedSearch);
         if (s.queryString == $scope.searchTerm) {
           exists = true;
           $scope.matchedSearch = s;
@@ -123,7 +123,10 @@ angular.module('contentController', [])
           console.log("SECOND GIANTBOMB QUERY");
           $scope.giantBombData = response.data.results;
           console.log($scope.giantBombData);
-          $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.image.super_url;
+          // Image URLs from GiantBomb are flakey, keep an eye on this
+          // Have to replace the https://www.giantbomb.com with http://static.giantbomb.com
+          // First remove https://www.giantbomb.com and then concatenate http://static.giantbomb.com
+          $scope.gameImage = "http://static.giantbomb.com" + $scope.giantBombData.image.super_url.split("com").pop();
           $scope.showImage = true;
           insertDescription($scope.giantBombData.description);
           $scope.giantBombData.original_release_date = $scope.trimReleaseDate();

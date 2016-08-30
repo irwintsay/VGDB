@@ -20,9 +20,23 @@ function insertDescription(gameText) {
   gameText = gameText.substring(n,gameText.length);
   n = gameText.search("<h2>");
   gameText = gameText.substring(0,n);
-  var $temp = $('<div>').html(gameText);
-  var straightText = $temp.text();
-  $('#giantbomb-description').text(straightText);
+  var htmlTextArray = gameText.split("</p>");
+  // Remove last, blank element
+  htmlTextArray.pop();
+  var $temp = $('<div>');
+  htmlTextArray.forEach(function(e, index) {
+    // Concatenate </p> back onto each paragraph element
+    htmlTextArray[index] += "</p>";
+    // Use temporary Div to convert each paragraph element into HTML
+    // and then back into text
+    $temp.html(htmlTextArray[index]);
+    htmlTextArray[index] = $temp.text();
+    // Surround each string of text with <p> tags again
+    htmlTextArray[index] = "<p>" + htmlTextArray[index] + "</p>";
+  });
+
+  var formattedDescript = htmlTextArray.join('');
+  $('#giantbomb-description').html(formattedDescript);
 };
 
 $(function() {

@@ -145,7 +145,15 @@ angular.module('contentController', [])
     };
 
     $scope.getTwitchStream = function() {
-      $http.get('https://api.twitch.tv/kraken/streams?limit=1&game=' + $scope.searchTerm).then(function(response) {
+      let req = {
+        method: 'GET',
+        url: 'https://api.twitch.tv/kraken/streams?limit=1&game=' + $scope.searchTerm,
+        headers: {
+          'Accept': 'application/vnd.twitchtv.v3+json',
+          'Client-ID': '6x56jz36ccm0yye0guusrbwtxbm178p'
+        }
+      }
+      $http(req).then(function(response) {
         // console.log("TWITCH REPLY");
         // console.log(response.data);
         $scope.twitchStream = response.data.streams[0].channel.display_name;
